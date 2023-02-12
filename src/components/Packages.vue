@@ -15,17 +15,50 @@
       <PackageCard />
       <PackageCard />
     </div>
+    <swiper
+      :space-between="50"
+      :centeredSlides="true"
+      :loop="true"
+      :slidesPerView="1"
+      :pagination="{ clickable: true }"
+    >
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+      <swiper-slide>
+        <PackageCard />
+      </swiper-slide>
+    </swiper>
     <Button title="see more" />
   </div>
 </template>
 
 <script>
 import { reactive, toRefs } from 'vue';
+// import Swiper core and required components
+import SwiperCore, { Pagination, A11y } from 'swiper';
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
 import PackageCard from './PackageCard.vue';
 import Button from './Button.vue';
 
+SwiperCore.use([Pagination, A11y]);
 export default {
-  components: { PackageCard, Button },
+  components: { PackageCard, Button, Swiper, SwiperSlide },
   setup() {
     const state = reactive({
       count: 0,
@@ -89,20 +122,6 @@ export default {
     gap: 65px;
     display: flex;
     margin-top: 85px;
-    @media screen and (max-width: 1079px) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      margin-left: 25px;
-      margin-right: 25px;
-      gap: 33px;
-      margin-bottom: 65px;
-    }
-    @media screen and (max-width: 435px) {
-      display: grid;
-      grid-template-columns: 1fr;
-      margin-left: 25px;
-      margin-right: 25px;
-    }
     &-second {
       justify-content: flex-end;
       margin-bottom: 65px;
@@ -117,9 +136,26 @@ export default {
         display: flex;
       }
     }
+    @media screen and (max-width: 1079px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-left: 25px;
+      margin-right: 25px;
+      gap: 33px;
+      margin-bottom: 65px;
+    }
+    @media screen and (max-width: 435px) {
+      display: none;
+    }
   }
   .btn {
     margin: auto;
+    @media screen and (max-width: 435px) {
+      margin-top: 80px !important;
+    }
+  }
+  .swiper-container {
+    display: none;
   }
   @media screen and (max-width: 1079px) {
     margin-bottom: 150px;
@@ -127,6 +163,29 @@ export default {
   @media screen and (max-width: 435px) {
     margin-top: 68px;
     padding: 0 20px;
+    .swiper-container {
+      display: block;
+      overflow: visible;
+      .swiper-pagination {
+        bottom: -45px;
+        gap: 24px;
+        display: flex;
+        justify-content: center;
+        .swiper-pagination-bullet {
+          width: 16px;
+          height: 16px;
+          background-color: #ffffff;
+          opacity: 1;
+          margin: 0;
+          transition: 0.2s ease;
+          &.swiper-pagination-bullet-active {
+            width: 32px;
+            background: #dc0506;
+            border-radius: 999px;
+          }
+        }
+      }
+    }
   }
 }
 </style>

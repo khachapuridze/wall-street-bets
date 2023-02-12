@@ -8,7 +8,6 @@
       :loop="true"
       :slidesPerView="1.55"
       navigation
-      :pagination="{ clickable: true }"
       :breakpoints="{
         300: {
           slidesPerView: 1.2,
@@ -53,14 +52,14 @@
 
 <script>
 // import Swiper core and required components
-import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
+import SwiperCore, { Navigation, A11y } from 'swiper';
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import ProjectSliderItem from './ProjectSliderItem.vue';
 
-SwiperCore.use([Navigation, Pagination, A11y]);
+SwiperCore.use([Navigation, A11y]);
 export default {
   components: {
     ProjectSliderItem,
