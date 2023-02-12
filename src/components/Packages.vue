@@ -123,7 +123,7 @@ export default {
     margin: auto;
   }
   @media screen and (max-width: 1079px) {
-    margin-bottom: 300px;
+    margin-bottom: 150px;
   }
 }
 </style>
