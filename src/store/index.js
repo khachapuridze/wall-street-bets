@@ -3,13 +3,13 @@ import { createStore } from 'vuex';
 export default createStore({
   state() {
     return {
-      numberAnimation: false,
+      menuIsOpen: false,
     };
   },
   mutations: {
-    startNumberAnimation(state) {
-      state.numberAnimation = true;
-    },
+    // toggleMenu(state, value) {
+    //   state.menuIsOpen = value;
+    // },
   },
   actions: {},
   modules: {},

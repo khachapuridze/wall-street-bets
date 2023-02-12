@@ -1,19 +1,19 @@
 <template>
   <div class="home">
-    <h1 data-scroll data-scroll-speed="1">Wall Street <span>Bets</span></h1>
-    <h3>
+    <h1 data-scroll data-scroll-speed="1.5">Wall Street <span>Bets</span></h1>
+    <h3 data-scroll data-scroll-speed="2">
       It is a long established fact that a reader will be distracted by the readable content of a page when looking at
       its layout.
     </h3>
 
-    <div class="elipse elipse-blue">
+    <div class="elipse elipse-blue" data-scroll data-scroll-speed="4">
       <img src="../assets/images/Ellipse3.png" alt="elipse" />
     </div>
-    <div class="elipse elipse-white">
+    <div class="elipse elipse-white" data-scroll data-scroll-speed="4">
       <img src="../assets/images/Ellipse4.png" alt="elipse" />
     </div>
 
-    <div class="home__socials">
+    <div class="home__socials" data-scroll data-scroll-speed="2">
       <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M35.8968 3.40226C36.3793 1.01561 35.0926 0.0779959 33.6452 0.674658L1.63985 13.716C-0.531365 14.6536 -0.45095 15.9322 1.31819 16.5288L9.44014 19.1712L28.4182 6.55605C29.3027 5.87415 30.1873 6.30033 29.4636 6.897L14.1042 21.5578L13.5413 30.5078C14.4259 30.5078 14.7476 30.1668 15.23 29.6554L19.1704 25.564L27.4532 32.0421C28.9811 32.9797 30.1069 32.4682 30.509 30.593L35.8968 3.40226Z"
@@ -37,7 +37,7 @@
     </div>
 
     <div class="home__join container">
-      <div class="scroll" @click="ScrollToBottom">
+      <div class="scroll" data-scroll data-scroll-speed="2" @click="ScrollToBottom">
         <svg width="72" height="73" viewBox="0 0 72 73" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M36 40.8999C35.8222 40.8999 35.6556 40.8666 35.5 40.7999C35.3445 40.7333 35.2 40.6333 35.0667 40.4999L28.4667 33.8999C28.2222 33.6555 28.1056 33.3444 28.1167 32.9666C28.1278 32.5888 28.2556 32.2777 28.5 32.0333C28.7889 31.7444 29.1056 31.6166 29.45 31.6499C29.7945 31.6833 30.1 31.8222 30.3667 32.0666L36 37.6999L41.6334 32.0666C41.8778 31.8222 42.1945 31.6888 42.5834 31.6666C42.9722 31.6444 43.2889 31.7777 43.5334 32.0666C43.8222 32.3111 43.95 32.6166 43.9167 32.9833C43.8834 33.3499 43.7445 33.6666 43.5 33.9333L36.9334 40.4999C36.8 40.6333 36.6556 40.7333 36.5 40.7999C36.3445 40.8666 36.1778 40.8999 36 40.8999Z"
@@ -64,14 +64,14 @@
         </svg>
         <span> Scroll Down </span>
       </div>
-      <p>Join Us To Uncover Boundless</p>
-      <h4>Opportunities in Crypto Marketing</h4>
+      <p data-scroll data-scroll-speed="2">Join Us To Uncover Boundless</p>
+      <h4 data-scroll data-scroll-speed="2">Opportunities in Crypto Marketing</h4>
     </div>
     <Packages />
     <Numbers />
     <div class="text-comp">
-      <h4>We Help You to Build Your <span>Brand</span></h4>
-      <p>
+      <h4 data-scroll data-scroll-speed="2">We Help You to Build Your <span>Brand</span></h4>
+      <p data-scroll data-scroll-speed="3">
         We specialize in helping projects express their brand in a way that fosters genuine connections to the audience
         to grow a base of investors interested in the long term success of a project and not a short transactional
         relationship in attempt to earn fast money. Our primary demographics is that of men aged 18-35 that have a
@@ -81,7 +81,7 @@
     </div>
     <div class="text-comp community">
       <h4>Our <span>Community</span></h4>
-      <p>
+      <p data-scroll data-scroll-speed="2">
         WallStreetBets reached world-wide fame (and meme status) during the now infamous GameStop $GME short squeeze
         that nearly bankrupted major hedge funds like Melvin Capital. Since then WallSteetBets or WSB at it is known ha
         been empowering retail equities and crypto trades in gaining edge and expanding their degenerate gambling
@@ -90,14 +90,14 @@
       <img src="../assets/images/community_bg.png" alt="community_bg" />
     </div>
 
-    <div class="text-comp our-projects" id="our-projects">
-      <h4>Our<span>Projects</span></h4>
-      <p>
+    <div class="text-comp our-projects" id="our-projects" data-scroll data-scroll-speed="2">
+      <h4 data-scroll data-scroll-speed="1">Our<span>Projects</span></h4>
+      <p data-scroll data-scroll-speed="2.5">
         It is a long established fact that a reader will be distracted by the readable content of a page when looking at
         its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
         opposed to using 'Content here, content here', making it look like readable English.
       </p>
-      <ProjectsSlider />
+      <ProjectsSlider data-scroll data-scroll-speed="3" />
     </div>
     <div class="eth">
       <div class="eth__layer"></div>
@@ -116,6 +116,8 @@ import Packages from '../components/Packages.vue';
 import Numbers from '../components/Numbers.vue';
 import ProjectsSlider from '../components/ProjectsSlider.vue';
 import Community from '../components/Community.vue';
+
+// ..
 
 export default {
   name: 'Home',
@@ -139,9 +141,6 @@ export default {
       });
       gsap.registerPlugin(ScrollTrigger);
       this.lmS.on('scroll', ScrollTrigger.update);
-      this.lmS.on('call', () => {
-        this.$store.commit('startNumberAnimation');
-      });
       ScrollTrigger.scrollerProxy('.js-scroll', {
         scrollTop(value) {
           return arguments.length ? this.lmS.scrollTo(value, 0, 0) : this.lmS.scroll.instance.scroll.y;

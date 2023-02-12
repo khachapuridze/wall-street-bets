@@ -1,9 +1,15 @@
 <template>
   <div class="header container">
-    <img class="header__logo__mobile" src="../assets/images/Mobile-Menu-Button.png" alt="" />
+    <div class="header__logo__mobile" @click="toggleMenu" :class="{ open: isOpen }">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="header__logo">
       <img src="../assets/images/logo.png" alt="logo" />
     </div>
+
     <div class="header__nav">
       <div class="header__nav-item active">About Us</div>
       <div class="header__nav-item">Services</div>
@@ -11,29 +17,54 @@
       <div class="header__nav-item">Partners</div>
     </div>
     <ButtonComponent title="Book Now" />
+
+    <div class="mobile-content" :class="{ open: isOpen }">
+      <img src="../assets//images/background.png" alt="background" />
+      <div class="header__nav">
+        <a class="header__nav-item active">About Us</a>
+        <a class="header__nav-item">Services</a>
+        <a class="header__nav-item">Community</a>
+        <a class="header__nav-item">Partners</a>
+      </div>
+      <ButtonComponent title="Book Now" />
+    </div>
   </div>
 </template>
 
 <script>
+import { ref } from 'vue';
 import ButtonComponent from '../components/Button.vue';
 export default {
   components: { ButtonComponent },
-  setup() {
-    return {};
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
+  methods: {
+    toggleMenu() {
+      this.isOpen = !this.isOpen;
+      this.isOpen ? (document.body.style.overflowY = 'hidden') : (document.body.style = '');
+    },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-top: 50px;
+  margin-top: 50px !important;
+
   position: relative;
   z-index: 10;
+  @media screen and (max-width: 870px) {
+    align-items: flex-start;
+  }
   @media screen and (max-width: 435px) {
     flex-direction: row-reverse;
+    margin-top: 24px !important;
   }
   &__logo {
     img {
@@ -88,14 +119,143 @@ export default {
       }
     }
   }
+  .btn {
+    @media screen and (max-width: 435px) {
+      display: none;
+    }
+  }
   .header__logo__mobile {
     display: none;
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: #0eacd3;
+    border-radius: 4px;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    span {
+      display: block;
+      position: absolute;
+      height: 2px;
+      width: 18px;
+      background: #ffffff;
+      border-radius: 9px;
+      opacity: 1;
+      left: 50%;
+
+      transform: rotate(0deg) translate(-50%, 15px);
+
+      transition: 0.25s ease-in-out;
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2) {
+        top: 5px;
+      }
+      &:nth-child(3) {
+        top: 5px;
+      }
+      &:nth-child(4) {
+        top: 10px;
+      }
+    }
+
+    &.open span:nth-child(1) {
+      top: 5px;
+      width: 0%;
+      left: 50%;
+    }
+
+    &.open span:nth-child(2) {
+      transform: rotate(45deg) translate(5px, 18px);
+      left: 22px;
+      top: 4px;
+    }
+
+    &.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(-12px, 11px);
+      left: 13px;
+      top: 4px;
+    }
+
+    &.open span:nth-child(4) {
+      top: 5px;
+      width: 0%;
+      left: 50%;
+    }
+
     @media screen and (max-width: 870px) {
       display: flex;
+      align-items: center;
+      justify-content: center;
     }
     @media screen and (max-width: 435px) {
       width: 44px;
       height: 44px;
+    }
+  }
+  .mobile-content {
+    display: none;
+    @media screen and (max-width: 870px) {
+      display: flex;
+      flex-direction: column;
+      top: 150px;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      z-index: 9999;
+      left: 0;
+      top: 150px;
+      background: linear-gradient(180deg, #120325 0%, #050505 100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s ease;
+      &.open {
+        opacity: 1;
+        visibility: visible;
+      }
+      img {
+        position: absolute;
+        opacity: 0.2;
+      }
+      .btn {
+        z-index: 1;
+        display: flex;
+        @media screen and (min-width: 436px) {
+          display: none;
+        }
+      }
+
+      .header__nav {
+        font-family: 'olympiccarrierexpand';
+        display: flex;
+        flex-direction: column;
+
+        a {
+          font-weight: 400;
+          font-size: 32px;
+          line-height: 40px;
+          text-decoration: unset;
+          margin-bottom: 40px;
+          color: #ffffff;
+          &.active {
+            color: #dc0506;
+          }
+
+          &::before {
+            content: unset;
+          }
+        }
+      }
     }
   }
 }

@@ -38,9 +38,5 @@ export default {
     height: 56px;
     width: 127px;
   }
-  @media screen and (max-width: 435px) {
-    display: none;
-    
-  }
 }
 </style>
