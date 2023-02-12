@@ -1,7 +1,7 @@
 <template>
-  <div class="packages" data-scroll data-scroll-speed="3">
-    <h2 class="packages__title" data-scroll data-scroll-speed="2">Promotion <span> Packages </span></h2>
-    <p class="packages__subtitle" data-scroll data-scroll-speed="2">All packages 25% off if paid in $WSB token.</p>
+  <div class="packages">
+    <h2 class="packages__title">Promotion <span> Packages </span></h2>
+    <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
     <div class="packages__list">
       <PackageCard />
       <PackageCard />
