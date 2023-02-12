@@ -310,13 +310,6 @@ export default {
   .text-comp {
     margin: 170px 0;
 
-    @media screen and (max-width: 870px) {
-      margin: 128px 0;
-    }
-
-    @media screen and (max-width: 435px) {
-      margin: 76px 0;
-    }
     h4 {
       font-family: 'olympiccarrierexpand';
       font-style: normal;
@@ -350,25 +343,45 @@ export default {
       line-height: 36px;
       text-align: center;
       color: #ffffff;
-      @media screen and (max-width: 870px) {
+      @media (max-width: 870px) {
+        width: 90%;
         font-style: normal;
         font-weight: 500;
         font-size: 20px;
         line-height: 32px;
+        margin: 10px auto;
       }
-      @media screen and (max-width: 435px) {
+      @media (max-width: 435px) {
         font-weight: 500;
         font-size: 14px;
         line-height: 20px;
       }
     }
+    @media screen and (max-width: 870px) {
+      margin: 128px 0;
+    }
+
+    @media screen and (max-width: 435px) {
+      margin: 76px 0;
+    }
   }
   .community {
     position: relative;
+    position: relative;
+    height: 742px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     img {
       position: absolute;
       width: 100%;
       height: 100%;
+    }
+    @media screen and (max-width: 870px) {
+      height: 420px;
+    }
+    @media screen and (max-width: 435px) {
+      height: 334px;
     }
   }
   .eth {
