@@ -384,13 +384,19 @@ export default {
       width: 100%;
       background: linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.526042) 58.85%, rgba(5, 5, 5, 0) 100%);
     }
-    @media screen and (max-width: 435px) {
-      height: 256px;
-      margin: 200px 0;
-    }
     img {
       height: 100%;
       width: 100%;
+    }
+    @media screen and (max-width: 1079px) {
+      height: 436px;
+      img {
+        object-fit: cover;
+      }
+    }
+    @media screen and (max-width: 435px) {
+      height: 256px;
+      margin: 200px 0;
     }
   }
   .our-projects {

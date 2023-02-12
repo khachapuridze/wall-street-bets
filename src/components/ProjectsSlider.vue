@@ -59,7 +59,6 @@ import SwiperCore, { Navigation, Pagination, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
 import ProjectSliderItem from './ProjectSliderItem.vue';
 
 SwiperCore.use([Navigation, Pagination, A11y]);
