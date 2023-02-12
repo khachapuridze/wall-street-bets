@@ -135,6 +135,7 @@ export default {
     font-size: 84px;
     line-height: 71px;
     color: #ffffff;
+    margin-top: 270px;
     @media screen and (max-width: 870px) {
       font-style: normal;
       font-weight: 400;
@@ -186,6 +187,7 @@ export default {
     gap: 40px;
     margin: 60px auto;
     justify-content: center;
+    margin-bottom: 220px;
     @media screen and (max-width: 870px) {
       margin-bottom: 224px;
       margin-top: 53px;

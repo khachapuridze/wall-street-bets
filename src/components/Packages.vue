@@ -41,6 +41,7 @@ export default {
 <style lang="scss">
 .packages {
   margin-top: 150px;
+  margin-bottom: 160px;
   @media screen and (max-width: 435px) {
     margin-top: 68px;
     padding: 0 20px;
@@ -120,6 +121,9 @@ export default {
   }
   .btn {
     margin: auto;
+  }
+  @media screen and (max-width: 1079px) {
+    margin-bottom: 300px;
   }
 }
 </style>
