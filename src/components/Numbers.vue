@@ -3,16 +3,27 @@
     <img src="../assets/images/numbers.png" alt="numbers" />
     <div class="numbers__cont">
       <div class="numbers__item">
-        <CountUp :autoplay="false" :end-val="65000" :start-val="0" :options="optionsCommunity" />
+        <CountUp
+          id="1"
+          @ready="onReady"
+          @reset="onReady"
+          :autoplay="false"
+          :end-val="65000"
+          :start-val="0"
+          :options="optionsCommunity"
+        />
+        <span class="mobile-number">65 000</span>
         <h4>Community Members</h4>
       </div>
       <div class="numbers__item">
-        <CountUp :autoplay="false" :end-val="1000" :startValue="0" :options="optionsProjects" />
+        <CountUp id="2" :autoplay="false" :end-val="1000" :startValue="0" :options="optionsProjects" />
+        <span class="mobile-number">1000 +</span>
 
         <h4>Projects Created</h4>
       </div>
       <div class="numbers__item">
-        <CountUp :end-val="96" :autoplay="false" :start-val="0" :options="optionsPercentage" />
+        <CountUp id="3" :end-val="96" :autoplay="false" :start-val="0" :options="optionsPercentage" />
+        <span class="mobile-number">96 %</span>
 
         <h4>Of Success Stories</h4>
       </div>
@@ -22,7 +33,6 @@
 
 <script>
 import CountUp from 'vue-countup-v3';
-import LocomotiveScroll from 'locomotive-scroll';
 
 export default {
   components: {
@@ -34,7 +44,7 @@ export default {
       optionsCommunity: {
         suffix: ' ',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 1000,
+        scrollSpyDelay: 500,
       },
       optionsProjects: {
         suffix: ' +',
@@ -44,13 +54,13 @@ export default {
       optionsPercentage: {
         suffix: '%',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 5000,
+        scrollSpyDelay: 4500,
       },
     };
   },
-  computed: {
-    numberAnimation() {
-      return this.$store.state.numberAnimation;
+  methods: {
+    onReady(instance, CountUp) {
+      console.log(instance, 'instanceinstanceinstance', CountUp);
     },
   },
 };
@@ -139,6 +149,17 @@ export default {
     align-items: center;
     justify-content: center;
     width: 333px;
+    .mobile-number {
+      display: none;
+      @media screen and (max-width: 435px) {
+        display: block;
+      }
+    }
+    .countup-wrap {
+      @media screen and (max-width: 435px) {
+        display: none;
+      }
+    }
   }
 }
 </style>

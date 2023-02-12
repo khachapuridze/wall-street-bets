@@ -46,7 +46,6 @@
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue';
 // import Swiper core and required components
 import SwiperCore, { Pagination, A11y } from 'swiper';
 
@@ -59,15 +58,7 @@ import Button from './Button.vue';
 SwiperCore.use([Pagination, A11y]);
 export default {
   components: { PackageCard, Button, Swiper, SwiperSlide },
-  setup() {
-    const state = reactive({
-      count: 0,
-    });
-
-    return {
-      ...toRefs(state),
-    };
-  },
+  setup() {},
 };
 </script>
 
