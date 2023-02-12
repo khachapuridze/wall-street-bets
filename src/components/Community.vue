@@ -1,7 +1,7 @@
 <template>
-  <div class="community">
-    <div class="community__card">
-      <div class="community__title">
+  <div class="community-card">
+    <div class="community-card__card">
+      <div class="community-card__title">
         <h4>Ready to Join <span>Community?</span></h4>
       </div>
       <p>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.community {
+.community-card {
   height: 420px;
   margin-top: 170px;
 
@@ -51,14 +51,14 @@ export default {
     @media screen and (max-width: 870px) {
       padding: 48px 32px;
       gap: 20px;
-      width: 656px;
+      width: 95%;
       height: 508px;
     }
-    @media screen and (max-width: 435px) {
+    @media screen and (max-width: 520px) {
       padding: 28px 20px;
       width: 90%;
-
       height: 452px;
+      transform: translateY(-60px);
     }
     p {
       margin-bottom: 32px;
@@ -74,8 +74,9 @@ export default {
         font-weight: 500;
         font-size: 20px;
         line-height: 32px;
+        margin: 20px 0;
       }
-      @media screen and (max-width: 435px) {
+      @media screen and (max-width: 520px) {
         font-style: normal;
         font-weight: 500;
         font-size: 16px;

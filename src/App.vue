@@ -10,16 +10,10 @@
 </template>
 <script>
 import Header from './layouts/Header.vue';
-import LocomotiveScroll from 'locomotive-scroll';
-import { gsap, ScrollTrigger } from 'gsap/all';
+
 import Footer from './layouts/Footer.vue';
 export default {
   components: { Header, Footer },
-  data() {
-    return {
-      lmS: null,
-    };
-  },
   // mounted() {
   //   this.lmS = new LocomotiveScroll({
   //     el: document.querySelector('#js-scroll'),
@@ -27,37 +21,6 @@ export default {
   //   });
   //   console.log('lmS', this.lmS);
   // },
-  methods: {
-    setScroll() {
-      let scroller = new LocomotiveScroll({
-        el: document.querySelector('[data-scroll-container]'),
-        smooth: true,
-      });
-      gsap.registerPlugin(ScrollTrigger);
-      scroller.on('scroll', ScrollTrigger.update);
-      scroller.on('call', () => {
-        this.$store.commit('startNumberAnimation');
-      });
-      ScrollTrigger.scrollerProxy('.js-scroll', {
-        scrollTop(value) {
-          return arguments.length ? scroller.scrollTo(value, 0, 0) : scroller.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            left: 0,
-            top: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-      });
-      ScrollTrigger.addEventListener('refresh', () => scroller.update());
-      ScrollTrigger.refresh();
-    },
-  },
-  mounted() {
-    this.setScroll();
-  },
   setup() {
     return {};
   },

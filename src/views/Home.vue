@@ -37,7 +37,7 @@
     </div>
 
     <div class="home__join container">
-      <div class="scroll">
+      <div class="scroll" @click="ScrollToBottom">
         <svg width="72" height="73" viewBox="0 0 72 73" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M36 40.8999C35.8222 40.8999 35.6556 40.8666 35.5 40.7999C35.3445 40.7333 35.2 40.6333 35.0667 40.4999L28.4667 33.8999C28.2222 33.6555 28.1056 33.3444 28.1167 32.9666C28.1278 32.5888 28.2556 32.2777 28.5 32.0333C28.7889 31.7444 29.1056 31.6166 29.45 31.6499C29.7945 31.6833 30.1 31.8222 30.3667 32.0666L36 37.6999L41.6334 32.0666C41.8778 31.8222 42.1945 31.6888 42.5834 31.6666C42.9722 31.6444 43.2889 31.7777 43.5334 32.0666C43.8222 32.3111 43.95 32.6166 43.9167 32.9833C43.8834 33.3499 43.7445 33.6666 43.5 33.9333L36.9334 40.4999C36.8 40.6333 36.6556 40.7333 36.5 40.7999C36.3445 40.8666 36.1778 40.8999 36 40.8999Z"
@@ -90,7 +90,7 @@
       <img src="../assets/images/community_bg.png" alt="community_bg" />
     </div>
 
-    <div class="text-comp our-projects">
+    <div class="text-comp our-projects" id="our-projects">
       <h4>Our<span>Projects</span></h4>
       <p>
         It is a long established fact that a reader will be distracted by the readable content of a page when looking at
@@ -108,7 +108,9 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import LocomotiveScroll from 'locomotive-scroll';
+import { gsap, ScrollTrigger } from 'gsap/all';
+
 import HelloWorld from '@/components/HelloWorld.vue';
 import Packages from '../components/Packages.vue';
 import Numbers from '../components/Numbers.vue';
@@ -123,6 +125,45 @@ export default {
     Numbers,
     ProjectsSlider,
     Community,
+  },
+  data() {
+    return {
+      lmS: null,
+    };
+  },
+  methods: {
+    setScroll() {
+      this.lmS = new LocomotiveScroll({
+        el: document.querySelector('[data-scroll-container]'),
+        smooth: true,
+      });
+      gsap.registerPlugin(ScrollTrigger);
+      this.lmS.on('scroll', ScrollTrigger.update);
+      this.lmS.on('call', () => {
+        this.$store.commit('startNumberAnimation');
+      });
+      ScrollTrigger.scrollerProxy('.js-scroll', {
+        scrollTop(value) {
+          return arguments.length ? this.lmS.scrollTo(value, 0, 0) : this.lmS.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+          return {
+            left: 0,
+            top: 0,
+            width: window.innerWidth,
+            height: window.innerHeight,
+          };
+        },
+      });
+      ScrollTrigger.addEventListener('refresh', () => this.lmS.update());
+      ScrollTrigger.refresh();
+    },
+    ScrollToBottom() {
+      this.lmS.scrollTo(document.getElementById('our-projects'));
+    },
+  },
+  mounted() {
+    this.setScroll();
   },
 };
 </script>
