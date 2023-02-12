@@ -7,6 +7,9 @@
   src: url(./fonts/Montserrat-VariableFont_wght.ttf);
 }
 
+@import 'swiper/swiper.scss';
+@import 'swiper/components/navigation/navigation.scss';
+
 * {
   box-sizing: border-box;
 }
