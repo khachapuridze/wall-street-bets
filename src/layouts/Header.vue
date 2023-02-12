@@ -12,19 +12,19 @@
 
     <div class="header__nav">
       <div class="header__nav-item active">About Us</div>
-      <div class="header__nav-item">Services</div>
-      <div class="header__nav-item">Community</div>
-      <div class="header__nav-item">Partners</div>
+      <div class="header__nav-item" @click="$emit('scrollTo', 'packages')">Services</div>
+      <div class="header__nav-item" @click="$emit('scrollTo', 'community')">Community</div>
+      <div class="header__nav-item" @click="$emit('scrollTo', 'partners')">Partners</div>
     </div>
     <ButtonComponent title="Book Now" />
 
     <div class="mobile-content" :class="{ open: isOpen }">
       <img src="../assets//images/background.png" alt="background" />
       <div class="header__nav">
-        <a class="header__nav-item active">About Us</a>
-        <a class="header__nav-item">Services</a>
-        <a class="header__nav-item">Community</a>
-        <a class="header__nav-item">Partners</a>
+        <a @click="toggleMenu" href="#" class="header__nav-item active">About Us</a>
+        <a @click="toggleMenu" href="#packages" class="header__nav-item">Services</a>
+        <a @click="toggleMenu" href="#community" class="header__nav-item">Community</a>
+        <a @click="toggleMenu" href="#partners" class="header__nav-item">Partners</a>
       </div>
       <ButtonComponent title="Book Now" />
     </div>
@@ -91,6 +91,7 @@ export default {
       font-weight: 500;
       font-size: 20px;
       line-height: 24px;
+      text-decoration: unset;
       position: relative;
       transition: 0.2s ease;
 
@@ -151,8 +152,13 @@ export default {
       left: 50%;
 
       transform: rotate(0deg) translate(-50%, 15px);
-
+      -webkit-transform: rotate(0deg) translate(-50%, 15px);
+      -moz-transform: rotate(0deg) translate(-50%, 15px);
+      -o-transform: rotate(0deg) translate(-50%, 15px);
       transition: 0.25s ease-in-out;
+      -webkit-transition: 0.25s ease-in-out;
+      -moz-transition: 0.25s ease-in-out;
+      -o-transition: 0.25s ease-in-out;
       &:nth-child(1) {
         top: 0px;
       }
@@ -176,12 +182,18 @@ export default {
 
     &.open span:nth-child(2) {
       transform: rotate(45deg) translate(5px, 18px);
+      -webkit-transform: rotate(45deg) translate(5px, 18px);
+      -moz-transform: rotate(45deg) translate(5px, 18px);
+      -o-transform: rotate(45deg) translate(5px, 18px);
       left: 22px;
       top: 4px;
     }
 
     &.open span:nth-child(3) {
       transform: rotate(-45deg) translate(-12px, 11px);
+      -webkit-transform: rotate(-45deg) translate(-12px, 11px);
+      -moz-transform: rotate(-45deg) translate(-12px, 11px);
+      -o-transform: rotate(-45deg) translate(-12px, 11px);
       left: 13px;
       top: 4px;
     }

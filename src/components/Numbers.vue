@@ -2,7 +2,7 @@
   <div class="numbers">
     <img src="../assets/images/numbers.png" alt="numbers" />
     <div class="numbers__cont">
-      <div class="numbers__item" data-scroll data-scroll-call="onViewPort" data-scroll-id="hey">
+      <div class="numbers__item">
         <CountUp :autoplay="false" :end-val="65000" :start-val="0" :options="optionsCommunity" />
         <h4>Community Members</h4>
       </div>
@@ -32,6 +32,7 @@ export default {
     return {
       delay: 3000,
       optionsCommunity: {
+        suffix: ' ',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
         scrollSpyDelay: 1000,
       },
@@ -59,6 +60,9 @@ export default {
 .numbers {
   position: relative;
   height: 683px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @media screen and (max-width: 870px) {
     height: 460px;
   }
@@ -77,8 +81,7 @@ export default {
     display: flex;
     justify-content: center;
     position: relative;
-    transform: translate(0px, -50%);
-    top: 50%;
+
     gap: 10%;
     @media screen and (max-width: 870px) {
       flex-wrap: wrap;
@@ -135,7 +138,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 300px;
+    width: 333px;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="community-card">
-    <div class="community-card__card">
+    <div class="community-card__card" id="community">
       <div class="community-card__title">
         <h4>Ready to Join <span>Community?</span></h4>
       </div>
@@ -48,9 +48,12 @@ export default {
     border-radius: 8px;
     transform: translateY(-112px);
     height: 452px;
-    @media screen and (max-width: 870px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (max-width: 1399px) {
       padding: 48px 32px;
-      gap: 20px;
+
       width: 95%;
       height: 508px;
     }

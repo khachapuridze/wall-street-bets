@@ -1,4 +1,6 @@
 <template>
+  <Header @scrollTo="ScrollToBottom" />
+
   <div class="home">
     <h1 data-scroll data-scroll-speed="1.5">Wall Street <span>Bets</span></h1>
     <h3 data-scroll data-scroll-speed="2">
@@ -37,7 +39,7 @@
     </div>
 
     <div class="home__join container">
-      <div class="scroll" data-scroll data-scroll-speed="5" @click="ScrollToBottom">
+      <div class="scroll" data-scroll data-scroll-speed="5" @click="ScrollToBottom('our-projects')">
         <svg width="72" height="73" viewBox="0 0 72 73" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M36 40.8999C35.8222 40.8999 35.6556 40.8666 35.5 40.7999C35.3445 40.7333 35.2 40.6333 35.0667 40.4999L28.4667 33.8999C28.2222 33.6555 28.1056 33.3444 28.1167 32.9666C28.1278 32.5888 28.2556 32.2777 28.5 32.0333C28.7889 31.7444 29.1056 31.6166 29.45 31.6499C29.7945 31.6833 30.1 31.8222 30.3667 32.0666L36 37.6999L41.6334 32.0666C41.8778 31.8222 42.1945 31.6888 42.5834 31.6666C42.9722 31.6444 43.2889 31.7777 43.5334 32.0666C43.8222 32.3111 43.95 32.6166 43.9167 32.9833C43.8834 33.3499 43.7445 33.6666 43.5 33.9333L36.9334 40.4999C36.8 40.6333 36.6556 40.7333 36.5 40.7999C36.3445 40.8666 36.1778 40.8999 36 40.8999Z"
@@ -111,6 +113,7 @@
 import LocomotiveScroll from 'locomotive-scroll';
 import { gsap, ScrollTrigger } from 'gsap/all';
 
+import Header from '../layouts/Header.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import Packages from '../components/Packages.vue';
 import Numbers from '../components/Numbers.vue';
@@ -127,6 +130,7 @@ export default {
     Numbers,
     ProjectsSlider,
     Community,
+    Header,
   },
   data() {
     return {
@@ -157,8 +161,8 @@ export default {
       ScrollTrigger.addEventListener('refresh', () => this.lmS.update());
       ScrollTrigger.refresh();
     },
-    ScrollToBottom() {
-      this.lmS.scrollTo(document.getElementById('our-projects'));
+    ScrollToBottom(id) {
+      this.lmS.scrollTo(document.getElementById(id));
     },
   },
   mounted() {

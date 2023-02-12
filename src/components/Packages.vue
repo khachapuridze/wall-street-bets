@@ -1,5 +1,5 @@
 <template>
-  <div class="packages">
+  <div class="packages" id="packages">
     <h2 class="packages__title">Promotion <span> Packages </span></h2>
     <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
     <div class="packages__list">
@@ -42,10 +42,6 @@ export default {
 .packages {
   margin-top: 150px;
   margin-bottom: 160px;
-  @media screen and (max-width: 435px) {
-    margin-top: 68px;
-    padding: 0 20px;
-  }
   &__title {
     font-weight: 400;
     font-size: 48px;
@@ -53,7 +49,7 @@ export default {
     text-align: center;
     font-family: 'olympiccarrierexpand';
     color: #ffffff;
-    @media screen and (max-width: 870px) {
+    @media screen and (max-width: 1079px) {
       font-style: normal;
       font-weight: 400;
       font-size: 36px;
@@ -76,7 +72,7 @@ export default {
     line-height: 36px;
     text-align: center;
     color: #bfbfbf;
-    @media screen and (max-width: 870px) {
+    @media screen and (max-width: 1079px) {
       font-style: normal;
       font-weight: 500;
       font-size: 20px;
@@ -92,13 +88,14 @@ export default {
   &__list {
     gap: 65px;
     display: flex;
-    margin-bottom: 65px;
-    @media screen and (max-width: 870px) {
+    margin-top: 85px;
+    @media screen and (max-width: 1079px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-left: 25px;
       margin-right: 25px;
       gap: 33px;
+      margin-bottom: 65px;
     }
     @media screen and (max-width: 435px) {
       display: grid;
@@ -108,13 +105,15 @@ export default {
     }
     &-second {
       justify-content: flex-end;
+      margin-bottom: 65px;
+
       @media screen and (max-width: 870px) {
         display: none;
       }
     }
     .mobile {
       display: none;
-      @media screen and (max-width: 870px) {
+      @media screen and (max-width: 1079px) {
         display: flex;
       }
     }
@@ -124,6 +123,10 @@ export default {
   }
   @media screen and (max-width: 1079px) {
     margin-bottom: 150px;
+  }
+  @media screen and (max-width: 435px) {
+    margin-top: 68px;
+    padding: 0 20px;
   }
 }
 </style>

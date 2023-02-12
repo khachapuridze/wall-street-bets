@@ -34,6 +34,10 @@ export default {
   line-height: 20px;
   color: #ffffff;
   cursor: pointer;
+  transition: 0.2s ease;
+  &:hover {
+    background-color: #f14849;
+  }
   @media screen and (max-width: 870px) {
     height: 56px;
     width: 127px;

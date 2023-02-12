@@ -46,7 +46,7 @@ export default {
   @media (max-width: 1500px) {
     width: 30%;
   }
-  @media screen and (max-width: 870px) {
+  @media screen and (max-width: 1079px) {
     width: 100%;
   }
   @media screen and (max-width: 726px) {
