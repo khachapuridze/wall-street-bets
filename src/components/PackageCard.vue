@@ -44,7 +44,8 @@ export default {
   transition: 0.2s ease;
 
   @media (max-width: 1500px) {
-    width: 30%;
+    width: 25%;
+    height: 540px;
   }
   @media screen and (max-width: 1079px) {
     width: 100%;

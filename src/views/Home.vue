@@ -2,6 +2,8 @@
   <Header @scrollTo="ScrollToBottom" />
 
   <div class="home">
+    <!-- <Form /> -->
+
     <h1 data-scroll data-scroll-speed="1.5">Wall Street <span>Bets</span></h1>
     <h3 data-scroll data-scroll-speed="2">
       It is a long established fact that a reader will be distracted by the readable content of a page when looking at
@@ -119,6 +121,7 @@ import Packages from '../components/Packages.vue';
 import Numbers from '../components/Numbers.vue';
 import ProjectsSlider from '../components/ProjectsSlider.vue';
 import Community from '../components/Community.vue';
+import Form from '../components/Form.vue';
 
 // ..
 
@@ -131,6 +134,7 @@ export default {
     ProjectsSlider,
     Community,
     Header,
+    Form,
   },
   data() {
     return {
