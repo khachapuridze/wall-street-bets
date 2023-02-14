@@ -73,6 +73,8 @@ export default {
   }
   &__logo {
     width: 208px;
+    position: relative;
+
     @media screen and (max-width: 870px) {
       position: relative;
     }

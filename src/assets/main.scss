@@ -13,7 +13,7 @@
 
 * {
   box-sizing: border-box;
-  will-change: transform;
+  // will-change: transform;
 }
 body {
   background: url('../assets//images/background.png') repeat right center;
@@ -49,4 +49,8 @@ body {
   @media (max-width: 1200px) {
     height: 100%;
   }
+}
+
+.w-c {
+  will-change: transform;
 }

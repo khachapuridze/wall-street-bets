@@ -1,5 +1,5 @@
 <template>
-  <div class="form" data-scroll data-scroll-sticky data-scroll-target="#js-scroll">
+  <div class="form w-c" data-scroll data-scroll-sticky data-scroll-target="#js-scroll">
     <div class="form__cont">
       <img src="../assets/images/form.png" alt="form" />
 
@@ -104,6 +104,9 @@ export default {
   opacity: 0;
   visibility: hidden;
   transition: 0.8s ease;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   &__title {
     position: relative;
     display: flex;
