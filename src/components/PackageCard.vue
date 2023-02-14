@@ -3,12 +3,13 @@
     <div class="hover-layer"></div>
     <img src="../assets/images/card.png" alt="card" />
     <div class="package-card__content">
-      <div class="package-card__title">Service <span> Name </span></div>
-      <div class="package-card__desc">
-        It is a long established fact that a reader will be distracted by the readable content of a page when looking at
-        its layout.
+      <div class="package-card__title">
+        {{ data.title }} <span> {{ data.coloredTitle }} </span>
       </div>
-      <div class="package-card__btn">
+      <div class="package-card__desc">
+        {{ data.desc }}
+      </div>
+      <div class="package-card__btn" @click="$emit('open', 'test')">
         Pricing & Details
         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -21,12 +22,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  setup() {
-    return {};
-  },
-};
+<script setup>
+defineProps({
+  data: Object,
+});
 </script>
 
 <style lang="scss" scoped>
@@ -60,12 +59,13 @@ export default {
     height: 100%;
     left: 0;
     top: 0;
-    background: #050505;
-    opacity: 0;
+    background: linear-gradient(360deg, #050505 0%, rgba(5, 5, 5, 0.661458) 32.29%, rgba(5, 5, 5, 0) 100%);
+    opacity: 0.64;
     z-index: 1;
     border-radius: 12px;
     transition: 0.2s ease;
     @media screen and (max-width: 726px) {
+
       opacity: 0.88;
     }
   }
@@ -92,6 +92,8 @@ export default {
   @media screen and (min-width: 726px) {
     &:hover {
       .hover-layer {
+        background: #050505;
+
         opacity: 0.88;
       }
       .package-card__title {

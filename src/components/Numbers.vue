@@ -3,15 +3,7 @@
     <img src="../assets/images/numbers.png" alt="numbers" />
     <div class="numbers__cont">
       <div class="numbers__item">
-        <CountUp
-          id="1"
-          @ready="onReady"
-          @reset="onReady"
-          :autoplay="false"
-          :end-val="65000"
-          :start-val="0"
-          :options="optionsCommunity"
-        />
+        <CountUp id="1" :autoplay="false" :end-val="65000" :start-val="0" :options="optionsCommunity" />
         <span class="mobile-number">65 000</span>
         <h4>Community Members</h4>
       </div>
@@ -44,25 +36,21 @@ export default {
       optionsCommunity: {
         suffix: ' ',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 500,
+        scrollSpyDelay: 1000,
       },
       optionsProjects: {
         suffix: ' +',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 3000,
+        scrollSpyDelay: 1000,
       },
       optionsPercentage: {
         suffix: '%',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 4500,
+        scrollSpyDelay: 1000,
       },
     };
   },
-  methods: {
-    onReady(instance, CountUp) {
-      console.log(instance, 'instanceinstanceinstance', CountUp);
-    },
-  },
+
 };
 </script>
 

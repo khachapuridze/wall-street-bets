@@ -3,17 +3,12 @@
     <h2 class="packages__title">Promotion <span> Packages </span></h2>
     <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
     <div class="packages__list">
-      <PackageCard />
-      <PackageCard />
-      <PackageCard />
-      <PackageCard class="mobile" />
-      <PackageCard class="mobile" />
-      <PackageCard class="mobile" />
+      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :data="packageJSON[0]" />
+
+      <PackageCard v-for="(i, indx) in 3" class="mobile" @open="openPackage" :key="indx + 3" :data="packageJSON[0]" />
     </div>
     <div class="packages__list packages__list-second">
-      <PackageCard />
-      <PackageCard />
-      <PackageCard />
+      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :data="packageJSON[0]" />
     </div>
     <swiper
       :space-between="50"
@@ -22,43 +17,65 @@
       :slidesPerView="1"
       :pagination="{ clickable: true }"
     >
-      <swiper-slide>
-        <PackageCard />
-      </swiper-slide>
-      <swiper-slide>
-        <PackageCard />
-      </swiper-slide>
-      <swiper-slide>
-        <PackageCard />
-      </swiper-slide>
-      <swiper-slide>
-        <PackageCard />
-      </swiper-slide>
-      <swiper-slide>
-        <PackageCard />
-      </swiper-slide>
-      <swiper-slide>
-        <PackageCard />
+      <swiper-slide v-for="(i, indx) in 6" @open="openPackage" :key="indx">
+        <PackageCard @open="openPackage" :data="packageJSON[0]" />
       </swiper-slide>
     </swiper>
-    <Button title="see more" />
+    <Button class="packages-btn" title="see more" />
+    <div class="form-container" :class="{ open: formOpen }">
+      <div class="form-container__layer" @click="closeForm"></div>
+      <Form @close="closeForm" />
+    </div>
   </div>
 </template>
 
 <script>
 // import Swiper core and required components
 import SwiperCore, { Pagination, A11y } from 'swiper';
+import { ref } from 'vue';
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 import PackageCard from './PackageCard.vue';
 import Button from './Button.vue';
+import Form from './Form.vue';
 
 SwiperCore.use([Pagination, A11y]);
 export default {
-  components: { PackageCard, Button, Swiper, SwiperSlide },
-  setup() {},
+  components: { PackageCard, Button, Swiper, SwiperSlide, Form },
+  setup(props, { emit }) {
+    const formOpen = ref(false);
+    const packageJSON = [
+      {
+        id: 1,
+        title: 'Voice',
+        coloredTitle: 'AMA 🗣',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 2,
+        title: 'Text ',
+        coloredTitle: 'AMA 💬',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+    ];
+    const openPackage = (value) => {
+      formOpen.value = true;
+      emit('toggleScroll', true);
+      console.log(value);
+    };
+    const closeForm = () => {
+      formOpen.value = false;
+      emit('toggleScroll', false);
+    };
+    return {
+      formOpen,
+      openPackage,
+      packageJSON,
+      closeForm,
+    };
+  },
 };
 </script>
 
@@ -139,10 +156,37 @@ export default {
       display: none;
     }
   }
-  .btn {
+  .packages-btn {
     margin: auto;
     @media screen and (max-width: 435px) {
       margin-top: 80px !important;
+    }
+  }
+  .form-container {
+    transition: 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+      .form {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.5s ease 0.5s;
+      }
+    }
+    &__layer {
+      position: fixed;
+      width: 100vw;
+      height: 100%;
+      background: black;
+      opacity: 0.9;
+      top: 0;
+      left: 0;
+      z-index: 99;
     }
   }
   .swiper-container {

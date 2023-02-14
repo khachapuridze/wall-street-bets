@@ -1,7 +1,7 @@
 <template>
   <div class="body-layer"></div>
 
-  <div id="js-scroll" class="js-scroll" data-scroll-container>
+  <div id="js-scroll" class="js-scroll" data-scroll-container data-scroll-section>
     <router-view />
     <Footer />
   </div>

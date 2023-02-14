@@ -1,5 +1,5 @@
 <template>
-  <div class="form">
+  <div class="form" data-scroll data-scroll-sticky data-scroll-target="#js-scroll">
     <div class="form__cont">
       <img src="../assets/images/form.png" alt="form" />
 
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="form__title-close">
+        <div class="form__title-close" @click="$emit('close')">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M10 11.8667L3.23334 18.6333C2.96668 18.9 2.65556 19.0333 2.30001 19.0333C1.94445 19.0333 1.63334 18.9 1.36668 18.6333C1.10001 18.3667 0.966675 18.0556 0.966675 17.7C0.966675 17.3445 1.10001 17.0333 1.36668 16.7667L8.13334 10L1.36668 3.23334C1.10001 2.96668 0.966675 2.65556 0.966675 2.30001C0.966675 1.94445 1.10001 1.63334 1.36668 1.36668C1.63334 1.10001 1.94445 0.966675 2.30001 0.966675C2.65556 0.966675 2.96668 1.10001 3.23334 1.36668L10 8.13334L16.7667 1.36668C17.0333 1.10001 17.3445 0.966675 17.7 0.966675C18.0556 0.966675 18.3667 1.10001 18.6333 1.36668C18.9 1.63334 19.0333 1.94445 19.0333 2.30001C19.0333 2.65556 18.9 2.96668 18.6333 3.23334L11.8667 10L18.6333 16.7667C18.9 17.0333 19.0333 17.3445 19.0333 17.7C19.0333 18.0556 18.9 18.3667 18.6333 18.6333C18.3667 18.9 18.0556 19.0333 17.7 19.0333C17.3445 19.0333 17.0333 18.9 16.7667 18.6333L10 11.8667Z"
@@ -48,26 +48,34 @@
       <div class="placeholder">Twitter Handle:</div>
       <input type="text" name="" id="" />
     </div>
+    <div class="form__input">
+      <div class="placeholder">Email:</div>
+      <input type="text" name="" id="" />
+    </div>
+    <div class="form__input">
+      <div class="placeholder">Your Ideal Price for the Product:</div>
+      <input type="text" name="" id="" />
+    </div>
     <div class="form__input-radio">
       <div class="title">Testing radio buttons:</div>
-      <div class="radio">
+      <label class="radio">
         <input type="radio" id="Option1" name="Option 1" value="Option 1" />
-        <label for="dewey">Option 1</label>
-      </div>
-      <div class="radio">
+        Option 1
+      </label>
+      <label class="radio">
         <input type="radio" id="Option1" name="Option 1" value="Option 1" />
-        <label for="dewey">Option 1</label>
-      </div>
-      <div class="radio">
+        Option 1
+      </label>
+      <label class="radio">
         <input type="radio" id="Option1" name="Option 1" value="Option 1" />
-        <label for="dewey">Option 1</label>
-      </div>
+        Option 1
+      </label>
     </div>
     <div class="form__agreement">
       <input type="checkbox" />
-      <p>I’m okay on some testing <span>Terms & Conditions</span></p>
+      <p>I’m okay on some testing <a>Terms & Conditions</a></p>
     </div>
-    <Button title="Get a Personalized Pricing Proposal" />
+    <Button title="Get a Personalized Pricing Proposal" send />
   </div>
 </template>
 
@@ -78,10 +86,24 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .form {
-  position: relative;
+  position: fixed;
+  width: 90vw;
+  max-width: 1200px;
+  background: linear-gradient(180deg, #120325 0%, #050505 100%);
+  border-radius: 12px;
   z-index: 9999;
+  left: 50%;
+  top: 100px;
+  translate: -50% 0%;
+  padding: 48px;
+  max-height: calc(100vh - 200px);
+  height: fit-content;
+  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.8s ease;
   &__title {
     position: relative;
     display: flex;
@@ -133,7 +155,8 @@ export default {
       font-weight: 500;
       font-size: 20px;
       line-height: 32px;
-      width: 596px;
+      width: 100%;
+      color: #ffffff;
     }
     &-close {
       position: absolute;
@@ -157,6 +180,12 @@ export default {
   &__cont {
     display: flex;
     gap: 48px;
+    img {
+      height: 323px;
+      @media (max-width: 1439px) {
+        display: none;
+      }
+    }
   }
   &__input {
     position: relative;
@@ -179,6 +208,10 @@ export default {
         color: #bfbfbf;
       }
     }
+    &:not(:focus-within) .placeholder {
+      transform: translate(0%, 75%);
+      font-size: 20px;
+    }
     .placeholder {
       font-weight: 500;
       font-size: 16px;
@@ -187,6 +220,8 @@ export default {
       position: absolute;
       left: 20px;
       top: 18px;
+      transition: 0.2s ease;
+      pointer-events: none;
     }
     input {
       width: 100%;
@@ -198,10 +233,6 @@ export default {
       font-weight: 500;
       font-size: 20px;
       line-height: 32px;
-      /* identical to box height, or 160% */
-
-      /* white */
-
       color: #ffffff;
       &:focus {
         outline: none;
@@ -212,6 +243,8 @@ export default {
       gap: 65px;
       position: relative;
       margin-top: 60px;
+      margin-bottom: 35px;
+
       .title {
         font-weight: 500;
         font-size: 16px;
@@ -222,15 +255,20 @@ export default {
         left: 0;
       }
       .radio {
+        cursor: pointer;
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 32px;
         input {
-          margin-right: 15px;
+          margin-right: 12px;
+          accent-color: #0eacd3;
         }
-        label {
-          color: #ffffff;
-          font-weight: 500;
-          font-size: 20px;
-          line-height: 32px;
-        }
+      }
+      @media (max-width: 1439px) {
+        gap: 15px;
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
     &.error {
@@ -285,19 +323,31 @@ export default {
   }
   &__agreement {
     display: flex;
+    margin-bottom: 35px;
+
     p {
       font-weight: 500;
       font-size: 20px;
       line-height: 32px;
-      margin-left: 15px;
-      /* identical to box height, or 160% */
-
-      /* white */
+      margin: 0 15px;
 
       color: #ffffff;
-      span {
+      @media (max-width: 1399px) {
+        font-size: 16px;
+      }
+      a {
+        text-decoration: unset;
         color: #0eacd3;
       }
+    }
+    input {
+      cursor: pointer;
+      accent-color: #0eacd3;
+    }
+  }
+  .btn {
+    @media (max-width: 870px) {
+      width: 100%;
     }
   }
 }

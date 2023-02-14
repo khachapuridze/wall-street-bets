@@ -2,8 +2,6 @@
   <Header @scrollTo="ScrollToBottom" />
 
   <div class="home">
-    <!-- <Form /> -->
-
     <h1 data-scroll data-scroll-speed="1.5">Wall Street <span>Bets</span></h1>
     <h3 data-scroll data-scroll-speed="2">
       It is a long established fact that a reader will be distracted by the readable content of a page when looking at
@@ -71,7 +69,7 @@
       <p data-scroll data-scroll-speed="2">Join Us To Uncover Boundless</p>
       <h4 data-scroll data-scroll-speed="2">Opportunities in Crypto Marketing</h4>
     </div>
-    <Packages />
+    <Packages @toggleScroll="dissableScroll" />
     <Numbers />
     <div class="text-comp">
       <h4 data-scroll data-scroll-speed="2">We Help You to Build Your <span>Brand</span></h4>
@@ -109,6 +107,17 @@
     </div>
     <Community />
   </div>
+
+  <!-- <div class="loader">
+    <video autoplay muted>
+      <source src="../assets/1.webm" type="video/webm" />
+
+      Your browser does not support the video tag.
+    </video>
+    <div class="line line-red"></div>
+
+    <div class="line line-blue"></div>
+  </div> -->
 </template>
 
 <script>
@@ -121,7 +130,6 @@ import Packages from '../components/Packages.vue';
 import Numbers from '../components/Numbers.vue';
 import ProjectsSlider from '../components/ProjectsSlider.vue';
 import Community from '../components/Community.vue';
-import Form from '../components/Form.vue';
 
 // ..
 
@@ -134,7 +142,6 @@ export default {
     ProjectsSlider,
     Community,
     Header,
-    Form,
   },
   data() {
     return {
@@ -164,6 +171,9 @@ export default {
       });
       ScrollTrigger.addEventListener('refresh', () => this.lmS.update());
       ScrollTrigger.refresh();
+    },
+    dissableScroll(state) {
+      // state ? this.lmS.stop() : this.lmS.start();
     },
     ScrollToBottom(id) {
       this.lmS.scrollTo(document.getElementById(id));
@@ -472,5 +482,134 @@ export default {
       margin: 128px 0 350px;
     }
   }
+}
+@keyframes identifier {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 30px;
+    left: 20px;
+  }
+
+  100% {
+    top: 0;
+  }
+}
+@keyframes moveRed {
+  0% {
+    // transform: translate(100%, -50%) scaleX(1);
+    transform: translate(130%, -50%) scaleX(1);
+  }
+  // 40% {
+  //   // transform: translate(80%, -50%) scaleX(0.3);
+  //   transform: translate(80%, -50%) scaleX(0.5);
+  // }
+
+  70% {
+    // transform: translate(70%, -50%) scaleX(0.2);
+    transform: translate(70%, -50%) scaleX(1);
+
+    // opacity: 0;
+  }
+  80% {
+    // transform: translate(60%, -50%) scaleX(0);
+    transform: translate(60%, -50%) scaleX(0.3);
+  }
+  100% {
+    // transform: translate(60%, -50%) scaleX(0);
+    transform: translate(55%, -50%) scaleX(0);
+  }
+}
+@keyframes moveBlue {
+  0% {
+    // transform: translate(100%, -50%) scaleX(1);
+    transform: translate(-130%, -50%) scaleX(1);
+  }
+  // 40% {
+  //   // transform: translate(80%, -50%) scaleX(0.3);
+  //   transform: translate(80%, -50%) scaleX(0.5);
+  // }
+
+  70% {
+    // transform: translate(70%, -50%) scaleX(0.2);
+    transform: translate(-70%, -50%) scaleX(1);
+
+    // opacity: 0;
+  }
+  80% {
+    // transform: translate(60%, -50%) scaleX(0);
+    transform: translate(-60%, -50%) scaleX(0.3);
+  }
+  100% {
+    // transform: translate(60%, -50%) scaleX(0);
+    transform: translate(-55%, -50%) scaleX(0);
+  }
+}
+
+@keyframes opacityVideo {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  30% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.loader {
+  background: linear-gradient(180deg, #120325 0%, #050505 100%);
+  z-index: 99999;
+  video {
+    position: fixed;
+    width: 500px;
+    height: 400px;
+    z-index: 99999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    animation: opacityVideo 1.5s linear forwards;
+  }
+  .line {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+
+    &-red {
+      transform: translate(55%, -50%) scaleX(0);
+      position: absolute;
+      left: 0px;
+      top: 50%;
+      background: #dc0506;
+      animation: moveRed 1.2s linear forwards;
+      transform-origin: 0 0;
+    }
+    &-blue {
+      right: 0px;
+      top: 50%;
+      transform: translate(-55%, -50%) scaleX(0);
+
+      background: #0eacd3;
+      animation: moveBlue 1.2s linear forwards;
+      transform-origin: 100% 100%;
+    }
+  }
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgb(200, 193, 193);
+  // animation: 3s identifier;
 }
 </style>

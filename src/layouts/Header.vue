@@ -7,7 +7,12 @@
       <span></span>
     </div>
     <div class="header__logo">
-      <img src="../assets/images/logo.png" alt="logo" />
+      <video autoplay loop muted>
+        <source src="../assets/2.webm" type="video/webm" />
+
+        Your browser does not support the video tag.
+      </video>
+      <!-- <img src="../assets/images/logo.png" alt="logo" /> -->
     </div>
 
     <div class="header__nav">
@@ -55,7 +60,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 50px !important;
+  padding-top: 50px !important;
 
   position: relative;
   z-index: 10;
@@ -64,17 +69,31 @@ export default {
   }
   @media screen and (max-width: 435px) {
     flex-direction: row-reverse;
-    margin-top: 24px !important;
+    padding-top: 24px !important;
   }
   &__logo {
-    img {
+    width: 208px;
+    @media screen and (max-width: 870px) {
+      position: relative;
+    }
+
+    video {
+      width: 208px;
+      position: absolute;
+      top: -80px;
+      left: 0;
+
       @media screen and (max-width: 870px) {
         width: 158px;
-        height: 64px;
+        top: -45px;
+        left: 67%;
+        transform: translate(-50%, 0%);
       }
       @media screen and (max-width: 435px) {
-        width: 128.38px;
-        height: 52px;
+        width: 160px;
+        top: -45px;
+        left: -20px;
+        transform: unset;
       }
     }
   }
