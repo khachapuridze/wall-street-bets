@@ -1,7 +1,20 @@
 <template>
   <div class="package-card">
     <div class="hover-layer"></div>
-    <img src="../assets/images/card.png" alt="card" />
+    <img
+      v-if="isMobile"
+      :src="!isNaN(props.index) && require(`@/assets/services/${props.index + 1}/${props.index + 1} Mobile.png`)"
+      alt="card"
+    />
+
+    <video v-else autoplay loop muted>
+      <source
+        :src="!isNaN(props.index) && require(`@/assets/services/${props.index + 1}/${props.index + 1} WEBM.webm`)"
+        type="video/webm"
+      />
+
+      Your browser does not support the video tag.
+    </video>
     <div class="package-card__content">
       <div class="package-card__title">
         {{ data.title }} <span> {{ data.coloredTitle }} </span>
@@ -23,9 +36,11 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   data: Object,
+  index: Number,
 });
+const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
 </script>
 
 <style lang="scss" scoped>
@@ -40,7 +55,7 @@ defineProps({
   flex-direction: column;
   justify-content: flex-end;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 1s ease;
 
   @media (max-width: 1500px) {
     width: 25%;
@@ -65,7 +80,6 @@ defineProps({
     border-radius: 12px;
     transition: 0.2s ease;
     @media screen and (max-width: 726px) {
-
       opacity: 0.88;
     }
   }
@@ -141,7 +155,8 @@ defineProps({
       visibility: visible;
     }
   }
-  img {
+  img,
+  video {
     position: absolute;
     width: 100%;
     height: 100%;

@@ -3,12 +3,25 @@
     <h2 class="packages__title">Promotion <span> Packages </span></h2>
     <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
     <div class="packages__list">
-      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :data="packageJSON[0]" />
+      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :index="indx" :data="packageJSON[0]" />
 
-      <PackageCard v-for="(i, indx) in 3" class="mobile" @open="openPackage" :key="indx + 3" :data="packageJSON[0]" />
+      <PackageCard
+        v-for="(i, indx) in 3"
+        class="mobile"
+        @open="openPackage"
+        :index="indx"
+        :key="indx"
+        :data="packageJSON[0]"
+      />
     </div>
     <div class="packages__list packages__list-second">
-      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :data="packageJSON[0]" />
+      <PackageCard
+        v-for="(i, indx) in 3"
+        @open="openPackage"
+        :key="indx + 3"
+        :index="indx + 3"
+        :data="packageJSON[0]"
+      />
     </div>
     <swiper
       :space-between="50"
@@ -18,7 +31,7 @@
       :pagination="{ clickable: true }"
     >
       <swiper-slide v-for="(i, indx) in 6" @open="openPackage" :key="indx">
-        <PackageCard @open="openPackage" :data="packageJSON[0]" />
+        <PackageCard :index="indx" @open="openPackage" :data="packageJSON[0]" />
       </swiper-slide>
     </swiper>
     <Button class="packages-btn" title="see more" />
