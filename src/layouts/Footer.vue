@@ -167,6 +167,9 @@ export default {};
     width: 350px;
     height: 300px;
   }
+  .mobile-footer-img {
+    display: none;
+  }
   @media (max-width: 450px) {
     .mobile-footer-img {
       display: block;
