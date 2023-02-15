@@ -6,6 +6,7 @@
 
       Your browser does not support the video tag.
     </video>
+    <img class="mobile-logo" src="../assets/images/logo.png" alt="form" />
     <div class="line line-red"></div>
 
     <div class="line line-blue"></div>
@@ -222,6 +223,9 @@ export default {
     animation: headerAnimation 0.5s linear forwards;
     opacity: 0;
     animation-delay: 5s;
+    @media screen and (max-width: 435px) {
+      animation-delay: 3.8s;
+    }
   }
   .wall-street {
     // transform: translateY(50px) scaleY(1);
@@ -253,6 +257,9 @@ export default {
       margin: 0;
       animation-delay: 3.5s;
       transform-origin: 0 0;
+      @media (max-width: 450px) {
+        animation-delay: 2.6s;
+      }
     }
   }
   h3 {
@@ -535,6 +542,9 @@ export default {
   animation: headerAnimation 0.5s linear forwards;
   opacity: 0;
   animation-delay: 4.5s;
+  // @media (max-width: 450px) {
+  //   animation-delay: 4s;
+  // }
 }
 @keyframes ellipseBlue {
   from {
@@ -702,8 +712,11 @@ export default {
   background: linear-gradient(180deg, #120325 0%, #050505 100%);
   z-index: 99999;
   animation: hideLoader 3.5s linear forwards;
-
-  video {
+  @media (max-width: 450px) {
+    animation: hideLoader 2.5s linear forwards;
+  }
+  video,
+  .mobile-logo {
     position: absolute;
     width: 400px;
     // height: 400px;
@@ -713,9 +726,22 @@ export default {
     transform: translate(-50%, -50%) scale(1);
     animation: opacityVideo 2.5s linear forwards;
     @media (max-width: 450px) {
-      animation: opacityVideoMobile 2.5s linear forwards;
+      animation: opacityVideo 1.5s linear forwards;
     }
   }
+  .mobile-logo {
+    display: none;
+    width: 60%;
+  }
+  @media (max-width: 450px) {
+    .mobile-logo {
+      display: block;
+    }
+    video {
+      display: none;
+    }
+  }
+
   .line {
     width: 100%;
     height: 10px;
@@ -758,12 +784,18 @@ export default {
 
       animation: lineBigBlue 0.6s linear forwards;
       animation-delay: 2.35s;
+      @media (max-width: 450px) {
+        animation-delay: 1.35s;
+      }
     }
     &-red {
       background: #dc0506;
       transform: translate(0px, -200%) scaleY(1);
       animation: lineBigRed 0.8s linear forwards;
       animation-delay: 2s;
+      @media (max-width: 450px) {
+        animation-delay: 1s;
+      }
     }
   }
   position: fixed;

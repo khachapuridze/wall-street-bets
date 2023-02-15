@@ -95,6 +95,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     text-align: left;
     color: #ffffff;
     margin: 0 auto;
+    margin-left: 48px;
     width: 90%;
     transform: translate(0px, 220px);
     transition: 0.4s ease;
@@ -110,6 +111,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     @media screen and (max-width: 490px) {
       font-size: 20px;
       line-height: 28px;
+      margin-left: 20px;
     }
   }
   @media screen and (min-width: 726px) {
@@ -152,10 +154,12 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     font-weight: 400;
     font-size: 20px;
     line-height: 36px;
-    text-align: center;
+    text-align: left;
     color: #bfbfbf;
-    margin: 30px auto;
+    margin: 30px 0;
     max-width: 300px;
+    margin-left: 48px;
+
     @media screen and (max-width: 726px) {
       font-size: 16px;
       line-height: 24px;
@@ -194,6 +198,8 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     border: 1px solid #ffffff;
     border-radius: 4px;
     cursor: pointer;
+    margin-left: 48px;
+
     @media screen and (max-width: 726px) {
       opacity: 1;
       visibility: visible;

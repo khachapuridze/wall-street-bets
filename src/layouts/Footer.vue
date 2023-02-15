@@ -8,6 +8,7 @@
 
             Your browser does not support the video tag.
           </video>
+          <img class="mobile-footer-img" src="../assets/images/logo.png" alt="form" />
         </div>
         <div class="footer__nav">
           <div class="footer__nav-item">About Us</div>
@@ -165,6 +166,16 @@ export default {};
   video {
     width: 350px;
     height: 300px;
+  }
+  @media (max-width: 450px) {
+    .mobile-footer-img {
+      display: block;
+      width: 150px;
+      margin: auto;
+    }
+    video {
+      display: none;
+    }
   }
 }
 </style>

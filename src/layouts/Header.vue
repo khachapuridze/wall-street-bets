@@ -19,6 +19,7 @@
 
           Your browser does not support the video tag.
         </video>
+        <img class="mobile-header-img" src="../assets/images/logo.png" alt="form" />
         <!-- <img src="../assets/images/logo.png" alt="logo" /> -->
       </div>
 
@@ -106,7 +107,8 @@ export default {
       position: relative;
     }
 
-    video {
+    video,
+    .mobile-header-img {
       width: 208px;
       position: absolute;
       top: -80px;
@@ -124,6 +126,20 @@ export default {
         left: unset;
         right: 0;
         transform: unset;
+      }
+    }
+    .mobile-header-img {
+      display: none;
+      width: 80%;
+    }
+    @media (max-width: 450px) {
+      .mobile-header-img {
+        display: block;
+        top: -16px;
+        width: 60%;
+      }
+      video {
+        display: none;
       }
     }
   }
