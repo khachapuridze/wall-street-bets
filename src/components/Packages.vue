@@ -129,10 +129,15 @@ export default {
       formOpen.value = true;
       emit('toggleScroll', true);
       console.log(value);
+
+      document.body.style.overflowY = 'hidden';
+      document.getElementById('js-scroll').style.overflow = 'hidden';
     };
     const closeForm = () => {
       formOpen.value = false;
       emit('toggleScroll', false);
+      document.body.style = '';
+      document.getElementById('js-scroll').style.overflow = 'auto';
     };
     return {
       formOpen,
@@ -271,6 +276,11 @@ export default {
       top: 0;
       left: 0;
       z-index: 99;
+      @media (max-width: 435px) {
+        translate: -50% 50%;
+        top: 24%;
+        left: 50%;
+      }
     }
   }
   .swiper-container {

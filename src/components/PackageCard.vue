@@ -164,6 +164,9 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
       visibility: visible;
       text-align: left;
     }
+    @media screen and (max-width: 435px) {
+      margin-left: 20px;
+    }
   }
   img,
   video {

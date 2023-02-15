@@ -107,12 +107,18 @@ export default {
   &::-webkit-scrollbar {
     display: none;
   }
+  @media screen and (max-width: 435px) {
+    padding: 24px;
+  }
   &__title {
     position: relative;
     display: flex;
     flex-direction: column;
     text-align: justify;
     cursor: pointer;
+    @media screen and (max-width: 435px) {
+      width: -webkit-fill-available;
+    }
 
     &-hidden {
       font-family: 'olympiccarrierexpand';
@@ -121,6 +127,10 @@ export default {
       font-size: 36px;
       line-height: 40px;
       color: #ffffff;
+      @media (max-width: 435px) {
+        font-size: 20px;
+        line-height: 28px;
+      }
     }
     &-spot {
       font-family: 'olympiccarrierexpand';
@@ -129,6 +139,10 @@ export default {
       font-size: 36px;
       line-height: 40px;
       color: #dc0506;
+      @media (max-width: 435px) {
+        font-size: 20px;
+        line-height: 28px;
+      }
     }
     &-fixed {
       font-family: 'olympiccarrierexpand';
@@ -137,6 +151,10 @@ export default {
       font-size: 32px;
       line-height: 40px;
       margin-right: 20px;
+      @media (max-width: 435px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
     &-price {
       font-family: 'olympiccarrierexpand';
@@ -146,6 +164,10 @@ export default {
       line-height: 40px;
       padding: 8px 16px;
       color: #ffffff;
+      @media (max-width: 435px) {
+        font-size: 16px;
+        line-height: 24px;
+      }
     }
     &-blue {
       width: 171px;
@@ -153,6 +175,10 @@ export default {
       background: #0eacd3;
       border-radius: 4px;
       display: flex;
+      @media (max-width: 435px) {
+        width: unset;
+        height: unset;
+      }
     }
     &-text {
       font-weight: 500;
@@ -160,6 +186,10 @@ export default {
       line-height: 32px;
       width: 100%;
       color: #ffffff;
+      @media (max-width: 435px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
     &-close {
       position: absolute;
@@ -173,6 +203,10 @@ export default {
 
       background: #dc0506;
       border-radius: 4px;
+
+      @media (max-width: 435px) {
+        right: 0px;
+      }
     }
   }
   &__price {
@@ -214,6 +248,10 @@ export default {
     &:not(:focus-within) .placeholder {
       transform: translate(0%, 75%);
       font-size: 20px;
+      @media screen and (max-width: 435px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
     .placeholder {
       font-weight: 500;
@@ -225,6 +263,11 @@ export default {
       top: 18px;
       transition: 0.2s ease;
       pointer-events: none;
+      @media screen and (max-width: 435px) {
+        font-size: 12px;
+        line-height: 20px;
+        top: 6px;
+      }
     }
     input {
       width: 100%;
@@ -237,6 +280,11 @@ export default {
       font-size: 20px;
       line-height: 32px;
       color: #ffffff;
+      @media screen and (max-width: 435px) {
+        font-size: 14px;
+        line-height: 20px;
+        height: 60px;
+      }
       &:focus {
         outline: none;
       }
@@ -333,11 +381,16 @@ export default {
       font-size: 20px;
       line-height: 32px;
       margin: 0 15px;
-
       color: #ffffff;
       @media (max-width: 1399px) {
         font-size: 16px;
       }
+      @media (max-width: 435px) {
+        font-size: 14px;
+        line-height: 20px;
+        text-align: left;
+      }
+
       a {
         text-decoration: unset;
         color: #0eacd3;
@@ -352,6 +405,10 @@ export default {
     @media (max-width: 870px) {
       width: 100%;
     }
+  }
+  @media (max-width: 435px) {
+    top: 50%;
+    translate: -50% 50%;
   }
 }
 </style>
