@@ -202,10 +202,14 @@ export default {
     display: flex;
     margin-top: 85px;
     &.active {
-      height: 540px;
+      height: 640px;
+
       opacity: 1;
       visibility: visible;
       transition: opacity 0.5s ease 0.3s;
+      @media (max-width: 1500px) {
+        height: 540px;
+      }
     }
     .mobile {
       display: none;
