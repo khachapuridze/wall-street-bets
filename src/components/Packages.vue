@@ -2,7 +2,7 @@
   <div class="packages" id="packages">
     <h2 class="packages__title">Promotion <span> Packages </span></h2>
     <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
-    <div class="packages__list">
+    <div class="packages__list packages__list-first" data-scroll>
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(0, 3)"
         @open="openPackage"

@@ -114,7 +114,7 @@
         its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
         opposed to using 'Content here, content here', making it look like readable English.
       </p>
-      <ProjectsSlider class="w-c" data-scroll data-scroll-speed="3" />
+      <ProjectsSlider class="w-c" />
     </div>
     <div class="eth">
       <div class="eth__layer"></div>
@@ -678,6 +678,26 @@ export default {
     transform: translate(-50%, -50%) scale(1);
   }
 }
+@keyframes opacityVideoMobile {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+  // 99% {
+  //   opacity: 1;
+  //   transform: translate(-50%, -50%) scale(1);
+  // }
+  100% {
+    opacity: 0;
+  }
+}
 .loader {
   background: linear-gradient(180deg, #120325 0%, #050505 100%);
   z-index: 99999;
@@ -692,6 +712,9 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     animation: opacityVideo 2.5s linear forwards;
+    @media (max-width: 450px) {
+      animation: opacityVideoMobile 2.5s linear forwards;
+    }
   }
   .line {
     width: 100%;
@@ -715,6 +738,9 @@ export default {
       background: #0eacd3;
       animation: moveBlue 1.5s linear forwards;
       transform-origin: 100% 100%;
+    }
+    @media (max-width: 450px) {
+      display: none;
     }
   }
   .line-big {
