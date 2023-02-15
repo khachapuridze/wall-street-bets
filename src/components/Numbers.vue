@@ -36,21 +36,20 @@ export default {
       optionsCommunity: {
         suffix: ' ',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 1000,
+        scrollSpyDelay: 2000,
       },
       optionsProjects: {
         suffix: ' +',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 1000,
+        scrollSpyDelay: 2000,
       },
       optionsPercentage: {
         suffix: '%',
         enableScrollSpy: true, // start animation when target is in view 在可视范围内才开始动画
-        scrollSpyDelay: 1000,
+        scrollSpyDelay: 2000,
       },
     };
   },
-
 };
 </script>
 

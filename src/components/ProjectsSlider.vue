@@ -1,5 +1,5 @@
 <template>
-  <div class="projects-slider">
+  <div class="projects-slider" data-scroll>
     <!-- @swiper="onSwiper"
       @slideChange="onSlideChange" -->
     <swiper
@@ -70,7 +70,22 @@ export default {
 </script>
 
 <style lang="scss">
+@keyframes moveItem {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: translate(0%, 0);
+  }
+}
 .projects-slider {
+  &.is-inview {
+    .swiper-container {
+      transform: translate(100%, 0);
+
+      animation: moveItem 1s linear forwards;
+    }
+  }
   .swiper-wrapper {
     .swiper-slide {
       height: 409px;

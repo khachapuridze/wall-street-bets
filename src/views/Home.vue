@@ -108,7 +108,7 @@
       <img src="../assets/images/community_bg.png" alt="community_bg" />
     </div>
 
-    <div class="text-comp our-projects w-c" id="our-projects" data-scroll data-scroll-speed="2">
+    <div class="text-comp our-projects w-c" id="our-projects" >
       <h4 class="w-c" data-scroll data-scroll-speed="1">Our<span>Projects</span></h4>
       <p class="w-c" data-scroll data-scroll-speed="2.5">
         It is a long established fact that a reader will be distracted by the readable content of a page when looking at
