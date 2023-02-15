@@ -338,6 +338,10 @@ export default {
           &::before {
             content: unset;
           }
+          @media screen and (max-width: 435px) {
+            font-size: 24px;
+            line-height: 32px;
+          }
         }
       }
     }
