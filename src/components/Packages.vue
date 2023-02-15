@@ -243,6 +243,7 @@ export default {
 
     @media screen and (max-width: 435px) {
       margin-top: 80px !important;
+      display: none;
     }
   }
   .form-container {

@@ -68,6 +68,9 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     width: 100%;
     height: 390px;
   }
+  @media screen and (max-width: 435px) {
+    height: 55vh;
+  }
   .hover-layer {
     position: absolute;
     width: 100%;
