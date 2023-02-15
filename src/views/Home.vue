@@ -108,7 +108,7 @@
       <img src="../assets/images/community_bg.png" alt="community_bg" />
     </div>
 
-    <div class="text-comp our-projects w-c" id="our-projects" >
+    <div class="text-comp our-projects w-c" id="our-projects">
       <h4 class="w-c" data-scroll data-scroll-speed="1">Our<span>Projects</span></h4>
       <p class="w-c" data-scroll data-scroll-speed="2.5">
         It is a long established fact that a reader will be distracted by the readable content of a page when looking at
@@ -419,6 +419,9 @@ export default {
     img {
       width: 50vw;
       height: 1000px;
+      @media screen and (max-width: 435px) {
+        display: none;
+      }
     }
   }
   .text-comp {
@@ -477,6 +480,9 @@ export default {
 
     @media screen and (max-width: 435px) {
       margin: 76px 0;
+      img {
+        width: 100%;
+      }
     }
   }
   .community {
@@ -523,7 +529,7 @@ export default {
     }
     @media screen and (max-width: 435px) {
       height: 256px;
-      margin: 200px 0;
+      margin: 150px 0;
     }
   }
   .our-projects {
@@ -535,6 +541,9 @@ export default {
     }
     @media screen and (max-width: 719px) {
       margin: 128px 0 350px;
+    }
+    @media screen and (max-width: 435px) {
+      margin: 128px 0 150px;
     }
   }
 }

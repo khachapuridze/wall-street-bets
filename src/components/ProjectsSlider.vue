@@ -124,6 +124,10 @@ export default {
   }
   .swiper-container {
     overflow: visible;
+    @media (max-width: 435px) {
+      padding-bottom: 280px;
+      overflow: hidden;
+    }
 
     .swiper-button-prev,
     .swiper-button-next {
@@ -144,6 +148,9 @@ export default {
         width: 64px;
         height: 64px;
         left: calc(50vw - 70px);
+      }
+      @media (max-width: 435px) {
+        bottom: 0% !important;
       }
       &::after {
         font-size: 25px;

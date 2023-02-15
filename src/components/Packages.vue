@@ -299,8 +299,10 @@ export default {
     .swiper-container {
       display: block;
       overflow: visible;
+      overflow: hidden;
+      padding-bottom: 60px;
       .swiper-pagination {
-        bottom: -45px;
+        bottom: 0px;
         gap: 24px;
         display: flex;
         justify-content: center;

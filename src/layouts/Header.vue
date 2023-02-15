@@ -349,9 +349,9 @@ export default {
       position: absolute;
       top: 88px;
       padding-top: 50px;
-      left: -8%;
+      // left: -8%;
       padding-top: 50px;
-      width: 115%;
+      // width: 115%;
       overflow: hidden;
     }
   }
