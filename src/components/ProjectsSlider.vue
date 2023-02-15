@@ -83,7 +83,7 @@ export default {
     .swiper-container {
       transform: translate(100%, 0);
 
-      animation: moveItem 1s linear forwards;
+      animation: moveItem 0.8s linear forwards;
     }
   }
   .swiper-wrapper {
