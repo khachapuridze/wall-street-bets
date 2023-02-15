@@ -87,7 +87,7 @@
     </div>
     <Packages @toggleScroll="dissableScroll" />
     <Numbers />
-    <div class="text-comp" id="about-us">
+    <div class="text-comp about-us" id="about-us">
       <h4 class="w-c">We Help You to Build Your <span>Brand</span></h4>
       <p class="w-c">
         We specialize in helping projects express their brand in a way that fosters genuine connections to the audience
@@ -474,6 +474,11 @@ export default {
         line-height: 20px;
       }
     }
+    &.about-us {
+      img {
+        opacity: 0.7;
+      }
+    }
     @media screen and (max-width: 870px) {
       margin: 128px 0;
     }
@@ -496,6 +501,8 @@ export default {
       position: absolute;
       width: 100%;
       height: 100%;
+      z-index: -1;
+      opacity: 0.2;
     }
     @media screen and (max-width: 870px) {
       height: 420px;

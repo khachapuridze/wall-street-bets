@@ -1,6 +1,11 @@
 <template>
   <div class="numbers">
-    <img src="../assets/images/numbers.png" alt="numbers" />
+    <video preload="auto" autoplay loop muted>
+      <source src="@/assets/eth.webm" type="video/webm" />
+
+      Your browser does not support the video tag.
+    </video>
+    <img class="mobile-number-img" src="../assets/images/numbers.png" alt="numbers" />
     <div class="numbers__cont">
       <div class="numbers__item">
         <CountUp id="1" :autoplay="false" :end-val="65000" :start-val="0" :options="optionsCommunity" />
@@ -66,13 +71,17 @@ export default {
   @media screen and (max-width: 435px) {
     height: 356px;
   }
-  img {
+  img,
+  video {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
     left: 0;
     z-index: -1;
+  }
+  video {
+    opacity: 0.32;
   }
   &__cont {
     display: flex;
@@ -146,6 +155,18 @@ export default {
       @media screen and (max-width: 435px) {
         display: none;
       }
+    }
+  }
+  .mobile-number-img {
+    display: none;
+  }
+  @media (max-width: 450px) {
+    .mobile-number-img {
+      display: block;
+      opacity: 0.35;
+    }
+    video {
+      display: none;
     }
   }
 }
