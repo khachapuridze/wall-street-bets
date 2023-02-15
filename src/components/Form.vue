@@ -408,7 +408,8 @@ export default {
   }
   @media (max-width: 435px) {
     top: 50%;
-    translate: -50% 50%;
+    translate: -50% 60%;
+
   }
 }
 </style>
