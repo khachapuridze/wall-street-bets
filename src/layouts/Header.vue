@@ -1,37 +1,46 @@
 <template>
-  <div class="header container">
-    <div class="header__logo__mobile" @click="toggleMenu" :class="{ open: isOpen }">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="header__logo">
-      <video preload="auto" autoplay loop muted>
-        <source src="@/assets/2.webm" type="video/webm" />
+  <div
+    class="header w-c"
+    :class="{ 'open-top': isOpen }"
+    data-scroll
+    data-scroll-sticky
+    data-scroll-target="#js-scroll"
+  >
+    <div class="container">
+      <div class="header__logo__mobile" @click="toggleMenu" :class="{ open: isOpen }">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="header__logo">
+        <video preload="auto" autoplay loop muted>
+          <source src="@/assets/2.webm" type="video/webm" />
 
-        Your browser does not support the video tag.
-      </video>
-      <!-- <img src="../assets/images/logo.png" alt="logo" /> -->
-    </div>
+          Your browser does not support the video tag.
+        </video>
+        <!-- <img src="../assets/images/logo.png" alt="logo" /> -->
+      </div>
 
-    <div class="header__nav">
-      <div class="header__nav-item active">About Us</div>
-      <div class="header__nav-item" @click="$emit('scrollTo', 'packages')">Services</div>
-      <div class="header__nav-item" @click="$emit('scrollTo', 'community')">Community</div>
-      <div class="header__nav-item" @click="$emit('scrollTo', 'partners')">Partners</div>
-    </div>
-    <ButtonComponent title="Book Now" />
-
-    <div class="mobile-content" :class="{ open: isOpen }">
-      <img src="../assets//images/background.png" alt="background" />
       <div class="header__nav">
-        <a @click="toggleMenu" href="#" class="header__nav-item active">About Us</a>
-        <a @click="toggleMenu" href="#packages" class="header__nav-item">Services</a>
-        <a @click="toggleMenu" href="#community" class="header__nav-item">Community</a>
-        <a @click="toggleMenu" href="#partners" class="header__nav-item">Partners</a>
+        <div class="header__nav-item" @click="$emit('scrollTo', 'about-us')">About Us</div>
+        <div class="header__nav-item" @click="$emit('scrollTo', 'packages')">Services</div>
+        <div class="header__nav-item" @click="$emit('scrollTo', 'our-projects')">Projects</div>
+        <div class="header__nav-item" @click="$emit('scrollTo', 'community')">Community</div>
+        <!-- <div class="header__nav-item" @click="$emit('scrollTo', 'partners')">Partners</div> -->
       </div>
       <ButtonComponent title="Book Now" />
+
+      <div class="mobile-content" :class="{ open: isOpen }">
+        <img src="../assets//images/background.png" alt="background" />
+        <div class="header__nav">
+          <a @click="toggleMenu" href="#" class="header__nav-item active">About Us</a>
+          <a @click="toggleMenu" href="#packages" class="header__nav-item">Services</a>
+          <a @click="toggleMenu" href="#our-projects" class="header__nav-item">Projects</a>
+          <a @click="toggleMenu" href="#community" class="header__nav-item">Community</a>
+        </div>
+        <ButtonComponent title="Book Now" />
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +58,13 @@ export default {
   methods: {
     toggleMenu() {
       this.isOpen = !this.isOpen;
-      this.isOpen ? (document.body.style.overflowY = 'hidden') : (document.body.style = '');
+      if (this.isOpen) {
+        document.body.style.overflowY = 'hidden';
+        document.getElementById('js-scroll').style.overflow = 'hidden';
+      } else {
+        document.body.style = '';
+        document.getElementById('js-scroll').style.overflow = 'auto';
+      }
     },
   },
 };
@@ -57,19 +72,31 @@ export default {
 
 <style lang="scss">
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   padding-top: 50px !important;
-
+  z-index: 999999999;
   position: relative;
   z-index: 10;
+  overflow: visible;
+  background: linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.526042) 58.85%, rgba(5, 5, 5, 0) 100%);
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &.open-top {
+    background: linear-gradient(180deg, #120325 0%, #050505 100%);
+    padding-bottom: 50px;
+  }
   @media screen and (max-width: 870px) {
     align-items: flex-start;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.526042) 58.85%, rgba(5, 5, 5, 0) 100%);
   }
   @media screen and (max-width: 435px) {
     flex-direction: row-reverse;
     padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
   &__logo {
     width: 208px;
@@ -93,8 +120,9 @@ export default {
       }
       @media screen and (max-width: 435px) {
         width: 160px;
-        top: -45px;
-        left: -20px;
+        top: -60px;
+        left: unset;
+        right: 0;
         transform: unset;
       }
     }
@@ -130,6 +158,11 @@ export default {
       }
       &:hover {
         color: #ffffff;
+        &::before {
+          opacity: 1;
+          visibility: visible;
+          width: 24px;
+        }
       }
       &.active {
         color: #ffffff;
@@ -240,17 +273,18 @@ export default {
     @media screen and (max-width: 870px) {
       display: flex;
       flex-direction: column;
-      top: 150px;
       align-items: center;
-      position: fixed;
+      position: absolute;
       width: 100%;
       height: 100vh;
       z-index: 9999;
+      padding-top: 200px;
       left: 0;
-      top: 150px;
+      top: 130px;
       background: linear-gradient(180deg, #120325 0%, #050505 100%);
       opacity: 0;
       visibility: hidden;
+
       transition: 0.2s ease;
       &.open {
         opacity: 1;
@@ -258,7 +292,8 @@ export default {
       }
       img {
         position: absolute;
-        opacity: 0.2;
+        opacity: 0.1;
+        height: 100%;
       }
       .btn {
         z-index: 1;
@@ -289,6 +324,14 @@ export default {
           }
         }
       }
+    }
+    @media screen and (max-width: 435px) {
+      position: absolute;
+      top: 88px;
+      padding-top: 50px;
+      left: -8%;
+      padding-top: 50px;
+      width: 115%;
     }
   }
 }

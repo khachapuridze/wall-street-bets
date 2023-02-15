@@ -3,7 +3,11 @@
     <footer class="footer">
       <div class="footer__content">
         <div class="footer__logo">
-          <img src="../assets/images/logo.png" alt="logo" />
+          <video preload="auto" autoplay loop muted>
+            <source src="@/assets/2.webm" type="video/webm" />
+
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div class="footer__nav">
           <div class="footer__nav-item">About Us</div>
@@ -157,6 +161,10 @@ export default {};
         text-decoration: unset;
       }
     }
+  }
+  video {
+    width: 350px;
+    height: 300px;
   }
 }
 </style>

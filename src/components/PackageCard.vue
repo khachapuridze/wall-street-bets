@@ -58,7 +58,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
   transition: 1s ease;
 
   @media (max-width: 1500px) {
-    width: 25%;
+    width: 27%;
     height: 540px;
   }
   @media screen and (max-width: 1079px) {
@@ -89,18 +89,24 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     font-weight: 400;
     font-size: 36px;
     line-height: 30px;
-    text-align: center;
+    text-align: left;
     color: #ffffff;
-    transform: translate(0px, 150px);
+    margin: 0 auto;
+    width: 90%;
+    transform: translate(0px, 220px);
     transition: 0.4s ease;
+    span {
+      color: #0eacd3;
+    }
     @media screen and (max-width: 726px) {
       font-size: 28px;
       line-height: 40px;
       transform: unset;
     }
 
-    span {
-      color: #0eacd3;
+    @media screen and (max-width: 490px) {
+      font-size: 20px;
+      line-height: 28px;
     }
   }
   @media screen and (min-width: 726px) {
@@ -153,6 +159,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
       margin: 20px auto;
       opacity: 1;
       visibility: visible;
+      text-align: left;
     }
   }
   img,
@@ -184,6 +191,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
     @media screen and (max-width: 726px) {
       opacity: 1;
       visibility: visible;
+      margin-left: 20px;
     }
     svg {
       margin-left: 10px;

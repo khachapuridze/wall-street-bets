@@ -1,6 +1,6 @@
 <template>
   <div class="community-card">
-    <div class="community-card__card" id="community">
+    <div class="community-card__card">
       <div class="community-card__title">
         <h4>Ready to Join <span>Community?</span></h4>
       </div>

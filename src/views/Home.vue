@@ -86,9 +86,9 @@
     </div>
     <Packages @toggleScroll="dissableScroll" />
     <Numbers />
-    <div class="text-comp">
-      <h4 class="w-c" data-scroll data-scroll-speed="2">We Help You to Build Your <span>Brand</span></h4>
-      <p class="w-c" data-scroll data-scroll-speed="3">
+    <div class="text-comp" id="about-us">
+      <h4 class="w-c">We Help You to Build Your <span>Brand</span></h4>
+      <p class="w-c">
         We specialize in helping projects express their brand in a way that fosters genuine connections to the audience
         to grow a base of investors interested in the long term success of a project and not a short transactional
         relationship in attempt to earn fast money. Our primary demographics is that of men aged 18-35 that have a
@@ -96,7 +96,7 @@
       </p>
       <img src="../assets/images/handshake.png" alt="handshake" />
     </div>
-    <div class="text-comp community">
+    <div class="text-comp community" id="community">
       <h4>Our <span>Community</span></h4>
       <p class="w-c" data-scroll data-scroll-speed="2">
         WallStreetBets reached world-wide fame (and meme status) during the now infamous GameStop $GME short squeeze
@@ -232,7 +232,7 @@ export default {
     height: 70px;
     margin-top: 270px;
     margin-bottom: 40px;
-
+    z-index: 9;
     @media screen and (max-width: 870px) {
       margin-top: 232px;
       margin-bottom: 32px;
@@ -251,7 +251,7 @@ export default {
       transform: translate(-50%, 0px);
       animation: fadeUp ease 0.7s both;
       margin: 0;
-      animation-delay: 4.5s;
+      animation-delay: 3.5s;
       transform-origin: 0 0;
     }
   }
@@ -397,7 +397,7 @@ export default {
       opacity: 0;
 
       animation: ellipseBlue 1s linear forwards;
-      animation-delay: 5s;
+      animation-delay: 4.5s;
     }
     &-white {
       left: -250px;
@@ -407,7 +407,7 @@ export default {
       opacity: 0;
       animation: ellipseWhite 1s linear forwards;
 
-      animation-delay: 5s;
+      animation-delay: 4.5s;
     }
     img {
       width: 50vw;
@@ -534,7 +534,7 @@ export default {
 .header-animation {
   animation: headerAnimation 0.5s linear forwards;
   opacity: 0;
-  animation-delay: 5.5s;
+  animation-delay: 4.5s;
 }
 @keyframes ellipseBlue {
   from {
@@ -598,10 +598,6 @@ export default {
   0% {
     transform: translate(0px, 100%) scaleY(1.5);
   }
-
-  80% {
-    transform: translate(0px, -150%) scaleY(1.2);
-  }
   100% {
     transform: translate(0px, -200%) scaleY(1);
   }
@@ -661,11 +657,15 @@ export default {
     transform: translate(-50%, -50%) scale(0);
   }
 
-  30% {
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
-  80% {
+  90% {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
   }
@@ -681,7 +681,7 @@ export default {
 .loader {
   background: linear-gradient(180deg, #120325 0%, #050505 100%);
   z-index: 99999;
-  animation: hideLoader 4.5s linear forwards;
+  animation: hideLoader 3.5s linear forwards;
 
   video {
     position: absolute;
@@ -691,7 +691,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    animation: opacityVideo 3s linear forwards;
+    animation: opacityVideo 2.5s linear forwards;
   }
   .line {
     width: 100%;
@@ -704,7 +704,7 @@ export default {
       left: 0px;
       top: 50%;
       background: #dc0506;
-      animation: moveRed 1.5s cubic-bezier(0.43, 0.87, 0.99, 0.93) forwards;
+      animation: moveRed 1.5s linear forwards;
       transform-origin: 0 0;
     }
     &-blue {
@@ -713,7 +713,7 @@ export default {
       transform: translate(-55%, -50%) scaleX(0);
 
       background: #0eacd3;
-      animation: moveBlue 1.5s cubic-bezier(0.43, 0.87, 0.99, 0.93) forwards;
+      animation: moveBlue 1.5s linear forwards;
       transform-origin: 100% 100%;
     }
   }
@@ -730,15 +730,14 @@ export default {
       background: #0eacd3;
       transform: translate(0px, -200%) scaleY(1);
 
-      animation: lineBigBlue 0.8s linear forwards;
-      animation-delay: 3s;
+      animation: lineBigBlue 0.6s linear forwards;
+      animation-delay: 2.35s;
     }
     &-red {
       background: #dc0506;
       transform: translate(0px, -200%) scaleY(1);
-
-      animation: lineBigRed 1.2s linear forwards;
-      animation-delay: 2.5s;
+      animation: lineBigRed 0.8s linear forwards;
+      animation-delay: 2s;
     }
   }
   position: fixed;

@@ -3,24 +3,39 @@
     <h2 class="packages__title">Promotion <span> Packages </span></h2>
     <p class="packages__subtitle">All packages 25% off if paid in $WSB token.</p>
     <div class="packages__list">
-      <PackageCard v-for="(i, indx) in 3" @open="openPackage" :key="indx" :index="indx" :data="packageJSON[0]" />
+      <PackageCard
+        v-for="(i, indx) in packageJSON.slice(0, 3)"
+        @open="openPackage"
+        :key="indx"
+        :index="indx"
+        :data="i"
+      />
 
       <PackageCard
-        v-for="(i, indx) in 3"
+        v-for="(i, indx) in packageJSON.slice(3, 6)"
         class="mobile"
         @open="openPackage"
         :index="indx"
         :key="indx"
-        :data="packageJSON[0]"
+        :data="i"
       />
     </div>
     <div class="packages__list packages__list-second">
       <PackageCard
-        v-for="(i, indx) in 3"
+        v-for="(i, indx) in packageJSON.slice(3, 6)"
         @open="openPackage"
         :key="indx + 3"
         :index="indx + 3"
-        :data="packageJSON[0]"
+        :data="i"
+      />
+    </div>
+    <div class="packages__list packages__list-third" :class="{ active: seeMore }">
+      <PackageCard
+        v-for="(i, indx) in packageJSON.slice(6)"
+        @open="openPackage"
+        :key="indx + 6"
+        :index="indx + 6"
+        :data="i"
       />
     </div>
     <swiper
@@ -30,11 +45,11 @@
       :slidesPerView="1"
       :pagination="{ clickable: true }"
     >
-      <swiper-slide v-for="(i, indx) in 6" @open="openPackage" :key="indx">
-        <PackageCard :index="indx" @open="openPackage" :data="packageJSON[0]" />
+      <swiper-slide v-for="(i, indx) in packageJSON" @open="openPackage" :key="indx">
+        <PackageCard :index="indx" @open="openPackage" :data="i" />
       </swiper-slide>
     </swiper>
-    <Button class="packages-btn" title="see more" />
+    <Button @click="seeMore = !seeMore" class="packages-btn" :title="!seeMore ? 'see more' : 'see less'" />
     <div class="form-container" :class="{ open: formOpen }">
       <div class="form-container__layer" @click="closeForm"></div>
       <Form @close="closeForm" />
@@ -59,17 +74,54 @@ export default {
   components: { PackageCard, Button, Swiper, SwiperSlide, Form },
   setup(props, { emit }) {
     const formOpen = ref(false);
+    const seeMore = ref(false);
     const packageJSON = [
       {
         id: 1,
-        title: 'Voice',
-        coloredTitle: 'AMA 🗣',
+        title: 'Standard Pinned Post',
+        coloredTitle: '',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 2,
         title: 'Text ',
         coloredTitle: 'AMA 💬',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 3,
+        title: 'Voice Chat ',
+        coloredTitle: 'AMA 🗣',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 4,
+        title: 'Hidden ',
+        coloredTitle: 'Gem 💎',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 5,
+        title: 'Post ',
+        coloredTitle: 'on Top Crypto Sub Reddits',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 6,
+        title: 'SuperShiller ',
+        coloredTitle: 'Special',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 7,
+        title: 'Mini-Voice ',
+        coloredTitle: 'AMA/"Meet and Greet" ',
+        desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
+      },
+      {
+        id: 8,
+        title: 'Shilling ',
+        coloredTitle: 'Service',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
     ];
@@ -87,6 +139,7 @@ export default {
       openPackage,
       packageJSON,
       closeForm,
+      seeMore,
     };
   },
 };
@@ -143,18 +196,33 @@ export default {
     gap: 65px;
     display: flex;
     margin-top: 85px;
-    &-second {
-      justify-content: flex-end;
-      margin-bottom: 65px;
-
-      @media screen and (max-width: 870px) {
-        display: none;
-      }
+    &.active {
+      height: 540px;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease 0.3s;
     }
     .mobile {
       display: none;
       @media screen and (max-width: 1079px) {
         display: flex;
+      }
+    }
+    &-second {
+      justify-content: flex-end;
+      margin-bottom: 65px;
+
+      @media screen and (max-width: 870px) {
+        display: none !important;
+      }
+    }
+    &-third {
+      height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: height 0.5s ease;
+      @media screen and (max-width: 870px) {
+        display: none;
       }
     }
     @media screen and (max-width: 1079px) {
@@ -171,6 +239,8 @@ export default {
   }
   .packages-btn {
     margin: auto;
+    margin-top: 65px;
+
     @media screen and (max-width: 435px) {
       margin-top: 80px !important;
     }

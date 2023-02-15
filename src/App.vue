@@ -31,11 +31,17 @@ export default {
   text-align: center;
   color: #2c3e50;
   overflow: hidden;
+  transform: perspective(1px);
 }
 .js-scroll {
   position: relative;
   z-index: 1;
   padding-bottom: 0px;
+  @media (max-width: 870px) {
+    height: 100vh;
+    overflow: auto;
+    overflow-x: hidden;
+  }
 }
 #nav {
   padding: 30px;
