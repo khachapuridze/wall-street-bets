@@ -1,7 +1,7 @@
 <template>
   <Header @scrollTo="ScrollToBottom" class="header-animation" />
   <div class="loader">
-    <video playsinline autoplay muted width="450" height="400">
+    <video preload="auto" autoplay muted width="450" height="400">
       <source src="@/assets/1.webm" type="video/webm" />
 
       Your browser does not support the video tag.

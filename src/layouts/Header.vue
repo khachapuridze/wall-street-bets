@@ -7,7 +7,7 @@
       <span></span>
     </div>
     <div class="header__logo">
-      <video autoplay loop muted>
+      <video preload="auto" autoplay loop muted>
         <source src="@/assets/2.webm" type="video/webm" />
 
         Your browser does not support the video tag.
