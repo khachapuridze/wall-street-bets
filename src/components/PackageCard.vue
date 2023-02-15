@@ -7,7 +7,7 @@
       alt="card"
     />
 
-    <video v-else autoplay loop muted>
+    <video v-else width="300" height="500" autoplay loop muted>
       <source
         :src="!isNaN(props.index) && require(`@/assets/services/${props.index + 1}/${props.index + 1} WEBM.webm`)"
         type="video/webm"

@@ -1,6 +1,18 @@
 <template>
   <Header @scrollTo="ScrollToBottom" class="header-animation" />
+  <div class="loader">
+    <video playsinline autoplay muted width="450" height="400">
+      <source src="@/assets/1.webm" type="video/webm" />
 
+      Your browser does not support the video tag.
+    </video>
+    <div class="line line-red"></div>
+
+    <div class="line line-blue"></div>
+
+    <div class="line-big line-big-blue"></div>
+    <div class="line-big line-big-red"></div>
+  </div>
   <div class="home">
     <div class="wall-street">
       <h1 class="w-c">Wall Street <span>Bets</span></h1>
@@ -109,20 +121,6 @@
       <img class="eth__img" src="../assets/images/eth.png" alt="eth" />
     </div>
     <Community />
-  </div>
-
-  <div class="loader">
-    <video autoplay muted>
-      <source src="../assets/1.webm" type="video/webm" />
-
-      Your browser does not support the video tag.
-    </video>
-    <div class="line line-red"></div>
-
-    <div class="line line-blue"></div>
-
-    <div class="line-big line-big-blue"></div>
-    <div class="line-big line-big-red"></div>
   </div>
 </template>
 
@@ -536,7 +534,7 @@ export default {
 .header-animation {
   animation: headerAnimation 0.5s linear forwards;
   opacity: 0;
-  animation-delay: 4.5s;
+  animation-delay: 5.5s;
 }
 @keyframes ellipseBlue {
   from {
@@ -622,52 +620,38 @@ export default {
 }
 @keyframes moveRed {
   0% {
-    // transform: translate(100%, -50%) scaleX(1);
     transform: translate(130%, -50%) scaleX(1);
   }
-  // 40% {
-  //   // transform: translate(80%, -50%) scaleX(0.3);
-  //   transform: translate(80%, -50%) scaleX(0.5);
-  // }
 
   70% {
-    // transform: translate(70%, -50%) scaleX(0.2);
-    transform: translate(70%, -50%) scaleX(1);
-
-    // opacity: 0;
+    transform: translate(100%, -50%) scaleX(1);
   }
   80% {
-    // transform: translate(60%, -50%) scaleX(0);
-    transform: translate(60%, -50%) scaleX(0.2);
+    transform: translate(80%, -50%) scaleX(1);
+  }
+  90% {
+    transform: translate(65%, -50%) scaleX(0.1);
   }
   100% {
-    // transform: translate(60%, -50%) scaleX(0);
-    transform: translate(55%, -50%) scaleX(0);
+    transform: translate(65%, -50%) scaleX(0);
   }
 }
 @keyframes moveBlue {
   0% {
-    // transform: translate(100%, -50%) scaleX(1);
     transform: translate(-130%, -50%) scaleX(1);
   }
-  // 40% {
-  //   // transform: translate(80%, -50%) scaleX(0.3);
-  //   transform: translate(80%, -50%) scaleX(0.5);
-  // }
 
   70% {
-    // transform: translate(70%, -50%) scaleX(0.2);
-    transform: translate(-70%, -50%) scaleX(1);
-
-    // opacity: 0;
+    transform: translate(-100%, -50%) scaleX(1);
   }
   80% {
-    // transform: translate(60%, -50%) scaleX(0);
-    transform: translate(-60%, -50%) scaleX(0.2);
+    transform: translate(-80%, -50%) scaleX(1);
+  }
+  90% {
+    transform: translate(-65%, -50%) scaleX(0.1);
   }
   100% {
-    // transform: translate(60%, -50%) scaleX(0);
-    transform: translate(-55%, -50%) scaleX(0);
+    transform: translate(-65%, -50%) scaleX(0);
   }
 }
 
@@ -679,7 +663,7 @@ export default {
 
   30% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(1);
   }
   80% {
     opacity: 1;
@@ -701,8 +685,8 @@ export default {
 
   video {
     position: absolute;
-    width: 500px;
-    height: 400px;
+    width: 400px;
+    // height: 400px;
     z-index: 99999;
     top: 50%;
     left: 50%;
@@ -715,12 +699,12 @@ export default {
     position: absolute;
 
     &-red {
-      transform: translate(55%, -50%) scaleX(0);
+      transform: translate(65%, -50%) scaleX(0);
       position: absolute;
       left: 0px;
       top: 50%;
       background: #dc0506;
-      animation: moveRed 1.5s linear forwards;
+      animation: moveRed 1.5s cubic-bezier(0.43, 0.87, 0.99, 0.93) forwards;
       transform-origin: 0 0;
     }
     &-blue {
@@ -729,7 +713,7 @@ export default {
       transform: translate(-55%, -50%) scaleX(0);
 
       background: #0eacd3;
-      animation: moveBlue 1.5s linear forwards;
+      animation: moveBlue 1.5s cubic-bezier(0.43, 0.87, 0.99, 0.93) forwards;
       transform-origin: 100% 100%;
     }
   }
@@ -746,7 +730,7 @@ export default {
       background: #0eacd3;
       transform: translate(0px, -200%) scaleY(1);
 
-      animation: lineBigBlue 1s linear forwards;
+      animation: lineBigBlue 0.8s linear forwards;
       animation-delay: 3s;
     }
     &-red {

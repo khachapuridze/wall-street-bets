@@ -15,6 +15,15 @@
   box-sizing: border-box;
   // will-change: transform;
 }
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: linear-gradient(180deg, #120325 0%, #050505 100%);
+}
 body {
   background: url('../assets//images/background.png') repeat right center;
   font-family: 'Montserrat';

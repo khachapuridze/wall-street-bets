@@ -8,7 +8,7 @@
     </div>
     <div class="header__logo">
       <video autoplay loop muted>
-        <source src="../assets/2.webm" type="video/webm" />
+        <source src="@/assets/2.webm" type="video/webm" />
 
         Your browser does not support the video tag.
       </video>
