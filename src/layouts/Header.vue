@@ -352,6 +352,7 @@ export default {
       left: -8%;
       padding-top: 50px;
       width: 115%;
+      overflow: hidden;
     }
   }
 }
