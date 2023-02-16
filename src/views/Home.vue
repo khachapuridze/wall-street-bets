@@ -95,7 +95,12 @@
         relationship in attempt to earn fast money. Our primary demographics is that of men aged 18-35 that have a
         thirst to take high risk in trading and investing
       </p>
-      <img src="../assets/images/handshake.png" alt="handshake" />
+      <img class="mobile-about-us-img" src="../assets/images/handshake.png" alt="handshake" />
+      <video preload="auto" loop autoplay muted width="450" height="400">
+        <source src="@/assets/handshake.webm" type="video/webm" />
+
+        Your browser does not support the video tag.
+      </video>
     </div>
     <div class="text-comp community" id="community">
       <h4>Our <span>Community</span></h4>
@@ -488,8 +493,19 @@ export default {
       }
     }
     &.about-us {
-      img {
+      .mobile-about-us-img {
+        display: none;
         opacity: 0.7;
+      }
+      @media (max-width: 450px) {
+        .mobile-about-us-img {
+          display: block;
+          width: 150px;
+          margin: auto;
+        }
+        video {
+          display: none;
+        }
       }
     }
     @media screen and (max-width: 870px) {
@@ -567,8 +583,6 @@ export default {
     @media (max-width: 450px) {
       .mobile-eth-img {
         display: block;
-        width: 150px;
-        margin: auto;
       }
       video {
         display: none;
