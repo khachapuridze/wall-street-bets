@@ -110,7 +110,7 @@
         been empowering retail equities and crypto trades in gaining edge and expanding their degenerate gambling
         activities.
       </p>
-      <video preload="auto" autoplay muted width="450" height="400">
+      <video preload="auto" autoplay muted width="450" height="400" loop>
         <source src="@/assets/community.webm" type="video/webm" />
 
         Your browser does not support the video tag.
