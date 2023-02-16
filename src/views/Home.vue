@@ -127,7 +127,12 @@
     </div>
     <div class="eth">
       <div class="eth__layer"></div>
-      <img class="eth__img" src="../assets/images/eth.png" alt="eth" />
+      <img class="mobile-eth-img eth__img" src="../assets/images/eth.png" alt="eth" />
+      <video preload="auto" autoplay loop muted>
+        <source src="@/assets/project.webm" type="video/webm" />
+
+        Your browser does not support the video tag.
+      </video>
     </div>
     <Community />
   </div>
@@ -548,10 +553,26 @@ export default {
       height: 100%;
       width: 100%;
       background: linear-gradient(180deg, #050505 0%, rgba(5, 5, 5, 0.526042) 58.85%, rgba(5, 5, 5, 0) 100%);
+      opacity: 0.5;
     }
-    img {
+
+    .mobile-eth-img {
+      display: none;
+    }
+    img,
+    video {
       height: 100%;
       width: 100%;
+    }
+    @media (max-width: 450px) {
+      .mobile-eth-img {
+        display: block;
+        width: 150px;
+        margin: auto;
+      }
+      video {
+        display: none;
+      }
     }
     @media screen and (max-width: 1079px) {
       height: 436px;
