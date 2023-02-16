@@ -1,5 +1,5 @@
 <template>
-  <div class="package-card">
+  <div class="package-card" @click="$emit('open', 'test')">
     <div class="hover-layer"></div>
     <img
       v-if="isMobile"
@@ -22,7 +22,7 @@
       <div class="package-card__desc">
         {{ data.desc }}
       </div>
-      <div class="package-card__btn" @click="$emit('open', 'test')">
+      <div class="package-card__btn">
         Pricing & Details
         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
