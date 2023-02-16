@@ -105,9 +105,14 @@
         been empowering retail equities and crypto trades in gaining edge and expanding their degenerate gambling
         activities.
       </p>
+      <video preload="auto" autoplay muted width="450" height="400">
+        <source src="@/assets/community.webm" type="video/webm" />
+
+        Your browser does not support the video tag.
+      </video>
       <picture>
         <source media="(max-width: 450px)" srcset="../assets/images/community_phone.png" />
-        <img src="../assets/images/community_bg.png" alt="community_bg" />
+        <img class="mobile-community-img" src="../assets/images/community_bg.png" alt="community_bg" />
       </picture>
     </div>
 
@@ -500,7 +505,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    img {
+    img,
+    video {
       position: absolute;
       width: 100%;
       height: 100%;
@@ -508,12 +514,26 @@ export default {
       top: 0;
       z-index: -1;
       opacity: 0.2;
+      @media (max-width: 800px) {
+        object-fit: cover;
+      }
     }
+
+    .mobile-community-img {
+      display: none;
+    }
+
     @media screen and (max-width: 870px) {
       height: 420px;
     }
-    @media screen and (max-width: 435px) {
+    @media screen and (max-width: 450px) {
       height: 334px;
+      .mobile-community-img {
+        display: block;
+      }
+      video {
+        display: none;
+      }
     }
   }
   .eth {
