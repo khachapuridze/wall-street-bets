@@ -50,10 +50,12 @@
       </swiper-slide>
     </swiper>
     <Button @click="seeMore = !seeMore" class="packages-btn" :title="!seeMore ? 'see more' : 'see less'" />
-    <div class="form-container" :class="{ open: formOpen }">
-      <div class="form-container__layer" @click="closeForm"></div>
-      <Form @close="closeForm" />
-    </div>
+    <teleport to="#form-modal">
+      <div class="form-container" :class="{ open: formOpen }">
+        <div class="form-container__layer" @click="closeForm"></div>
+        <Form @close="closeForm" />
+      </div>
+    </teleport>
   </div>
 </template>
 
@@ -255,38 +257,7 @@ export default {
       display: none;
     }
   }
-  .form-container {
-    transition: 0.5s ease;
-    opacity: 0;
-    visibility: hidden;
-    display: flex;
-    justify-content: center;
 
-    &.open {
-      opacity: 1;
-      visibility: visible;
-      .form {
-        opacity: 1;
-        visibility: visible;
-        transition: opacity 0.5s ease 0.5s;
-      }
-    }
-    &__layer {
-      position: fixed;
-      width: 100vw;
-      height: 100%;
-      background: black;
-      opacity: 0.9;
-      top: 0;
-      left: 0;
-      z-index: 99;
-      @media (max-width: 435px) {
-        translate: -50% 50%;
-        top: 24%;
-        left: 50%;
-      }
-    }
-  }
   .swiper-container {
     display: none;
   }

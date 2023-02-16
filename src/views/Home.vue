@@ -105,7 +105,10 @@
         been empowering retail equities and crypto trades in gaining edge and expanding their degenerate gambling
         activities.
       </p>
-      <img src="../assets/images/community_bg.png" alt="community_bg" />
+      <picture>
+        <source media="(max-width: 450px)" srcset="../assets/images/community_phone.png" />
+        <img src="../assets/images/community_bg.png" alt="community_bg" />
+      </picture>
     </div>
 
     <div class="text-comp our-projects w-c" id="our-projects">
@@ -747,7 +750,7 @@ export default {
   }
   .mobile-logo {
     display: none;
-    width: 60%;
+    width: 50%;
   }
   @media (max-width: 450px) {
     .mobile-logo {

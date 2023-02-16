@@ -10,12 +10,12 @@
           </video>
           <img class="mobile-footer-img" src="../assets/images/logo.png" alt="form" />
         </div>
-        <div class="footer__nav">
+        <!-- <div class="footer__nav">
           <div class="footer__nav-item">About Us</div>
           <div class="footer__nav-item">Services</div>
           <div class="footer__nav-item">Community</div>
           <div class="footer__nav-item">Partners</div>
-        </div>
+        </div> -->
         <div class="footer__socials">
           <svg width="36" height="33" viewBox="0 0 36 33" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

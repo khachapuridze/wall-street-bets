@@ -151,6 +151,7 @@ export default {
       font-size: 32px;
       line-height: 40px;
       margin-right: 20px;
+      color: #a9a4af;
       @media (max-width: 435px) {
         font-size: 16px;
         line-height: 24px;
@@ -407,8 +408,8 @@ export default {
     }
   }
   @media (max-width: 435px) {
-    top: calc(100vh - 200px);
-    translate: -50% calc(100vh - 300px);
+    top: 50%;
+    translate: -50% -50%;
   }
 }
 </style>
