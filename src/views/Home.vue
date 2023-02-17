@@ -202,10 +202,16 @@ export default {
       this.lmS.scrollTo(document.getElementById(id));
     },
   },
+
   mounted() {
-    setTimeout(() => {
-      this.setScroll();
-    }, 4000);
+    const _this = this;
+    document.onreadystatechange = () => {
+      if (document.readyState == 'complete') {
+        setTimeout(() => {
+          this.setScroll();
+        }, 4000);
+      }
+    };
   },
 };
 </script>
