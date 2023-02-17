@@ -58,7 +58,7 @@ const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches
   transition: 1s ease;
 
   @media (max-width: 1500px) {
-    width: 27%;
+    width: 28%;
     height: 540px;
   }
   @media screen and (max-width: 1079px) {
