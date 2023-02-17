@@ -1,7 +1,7 @@
 <template>
   <div class="body-layer"></div>
 
-  <div id="js-scroll" class="js-scroll w-c" data-scroll-container>
+  <div id="js-scroll" class="js-scroll w-c" :class="{ 'see-more': $store.state.menuIsOpen }" data-scroll-container>
     <router-view />
     <Footer />
   </div>
@@ -36,7 +36,9 @@ export default {
 .js-scroll {
   position: relative;
   z-index: 1;
-  padding-bottom: 0px;
+  // &.see-more {
+  //   padding-bottom: 540px;
+  // }
   @media (max-width: 870px) {
     height: 100vh;
     overflow: auto;

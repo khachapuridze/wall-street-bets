@@ -29,7 +29,7 @@
         :data="i"
       />
     </div>
-    <div class="packages__list packages__list-third" :class="{ active: seeMore }">
+    <div class="packages__list packages__list-third" :class="{ active: $store.state.menuIsOpen }">
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(6)"
         @open="openPackage"
@@ -49,7 +49,7 @@
         <PackageCard :index="indx" @open="openPackage" :data="i" />
       </swiper-slide>
     </swiper>
-    <Button @click="seeMore = !seeMore" class="packages-btn" :title="!seeMore ? 'see more' : 'see less'" />
+    <Button @click="toggleSeeMore" class="packages-btn" :title="!$store.state.menuIsOpen ? 'see more' : 'see less'" />
     <teleport to="#form-modal">
       <div class="form-container" :class="{ open: formOpen }">
         <div class="form-container__layer" @click="closeForm"></div>
@@ -74,6 +74,11 @@ import Form from './Form.vue';
 SwiperCore.use([Pagination, A11y]);
 export default {
   components: { PackageCard, Button, Swiper, SwiperSlide, Form },
+  methods: {
+    toggleSeeMore() {
+      this.$store.commit('toggleMenu');
+    },
+  },
   setup(props, { emit }) {
     const formOpen = ref(false);
     const seeMore = ref(false);
@@ -127,6 +132,7 @@ export default {
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
     ];
+
     const openPackage = (value) => {
       formOpen.value = true;
       emit('toggleScroll', true);

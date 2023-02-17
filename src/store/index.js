@@ -7,9 +7,9 @@ export default createStore({
     };
   },
   mutations: {
-    // toggleMenu(state, value) {
-    //   state.menuIsOpen = value;
-    // },
+    toggleMenu(state) {
+      state.menuIsOpen = !state.menuIsOpen;
+    },
   },
   actions: {},
   modules: {},

@@ -33,7 +33,7 @@
       <ButtonComponent title="Book Now" />
 
       <div class="mobile-content" :class="{ open: isOpen }">
-        <img src="../assets//images/background.png" alt="background" />
+        <img src="../assets//images/background.jpg" alt="background" />
         <div class="header__nav">
           <a @click="toggleMenu" href="#" class="header__nav-item active">About Us</a>
           <a @click="toggleMenu" href="#packages" class="header__nav-item">Services</a>

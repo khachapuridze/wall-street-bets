@@ -101,6 +101,12 @@
 
         Your browser does not support the video tag.
       </video>
+      <div class="elipse elipse-blue w-c">
+        <img src="../assets/images/Ellipse3.png" alt="elipse" />
+      </div>
+      <div class="elipse elipse-white w-c">
+        <img src="../assets/images/Ellipse4.png" alt="elipse" />
+      </div>
     </div>
     <div class="text-comp community" id="community">
       <h4>Our <span>Community</span></h4>
@@ -200,6 +206,15 @@ export default {
     },
     ScrollToBottom(id) {
       this.lmS.scrollTo(document.getElementById(id));
+    },
+  },
+  watch: {
+    '$store.state.menuIsOpen'(newVal) {
+      newVal
+        ? setTimeout(() => {
+            this.lmS?.update();
+          }, 500)
+        : '';
     },
   },
 
@@ -449,7 +464,7 @@ export default {
     }
   }
   .text-comp {
-    margin: 170px 0;
+    padding: 170px 0;
 
     h4 {
       font-family: 'olympiccarrierexpand';
@@ -499,6 +514,35 @@ export default {
       }
     }
     &.about-us {
+      position: relative;
+      .elipse {
+        width: fit-content;
+
+        &-blue {
+          position: absolute;
+          right: -18%;
+          top: 180px;
+          transform: unset;
+          opacity: 1;
+
+          animation: unset;
+        }
+        &-white {
+          left: -250px;
+          position: absolute;
+          top: -50px;
+          transform: unset;
+          opacity: 1;
+          animation: unset;
+        }
+        img {
+          width: 50vw;
+          height: 1000px;
+          @media screen and (max-width: 435px) {
+            display: none;
+          }
+        }
+      }
       .mobile-about-us-img {
         display: none;
         opacity: 0.7;
@@ -515,11 +559,11 @@ export default {
       }
     }
     @media screen and (max-width: 870px) {
-      margin: 128px 0;
+      padding: 128px 0;
     }
 
     @media screen and (max-width: 435px) {
-      margin: 76px 0;
+      padding: 76px 0;
       img {
         width: 100%;
       }
