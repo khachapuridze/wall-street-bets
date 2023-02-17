@@ -48,10 +48,10 @@
     </div>
 
     <div class="elipse elipse-blue w-c">
-      <img src="../assets/images/Ellipse3.png" alt="elipse" />
+      <img src="../assets/images/Ellipse3.png" data-scroll alt="elipse" />
     </div>
     <div class="elipse elipse-white w-c">
-      <img src="../assets/images/Ellipse4.png" alt="elipse" />
+      <img src="../assets/images/Ellipse4.png" data-scroll alt="elipse" />
     </div>
 
     <div class="home__join container">
@@ -101,10 +101,10 @@
 
         Your browser does not support the video tag.
       </video>
-      <div class="elipse elipse-blue w-c">
+      <div class="elipse elipse-blue w-c" data-scroll data-scroll-speed="2">
         <img src="../assets/images/Ellipse3.png" alt="elipse" />
       </div>
-      <div class="elipse elipse-white w-c">
+      <div class="elipse elipse-white w-c" data-scroll data-scroll-speed="2">
         <img src="../assets/images/Ellipse4.png" alt="elipse" />
       </div>
     </div>
@@ -121,10 +121,7 @@
 
         Your browser does not support the video tag.
       </video>
-      <picture>
-        <source media="(max-width: 450px)" srcset="../assets/images/community_phone.png" />
-        <img class="mobile-community-img" src="../assets/images/community_bg.png" alt="community_bg" />
-      </picture>
+      <img class="mobile-community-img" src="../assets/images/community_phone.png" alt="community_bg" />
     </div>
 
     <div class="text-comp our-projects w-c" id="our-projects">
@@ -450,9 +447,8 @@ export default {
       position: absolute;
       top: -50px;
       transform: translate(-100%, 0px);
-      opacity: 0;
       animation: ellipseWhite 1s linear forwards;
-
+      opacity: 0;
       animation-delay: 4.5s;
     }
     img {
@@ -523,7 +519,7 @@ export default {
           right: -18%;
           top: 180px;
           transform: unset;
-          opacity: 1;
+          opacity: 0.64;
 
           animation: unset;
         }
@@ -532,7 +528,7 @@ export default {
           position: absolute;
           top: -50px;
           transform: unset;
-          opacity: 1;
+          opacity: 0.64;
           animation: unset;
         }
         img {
@@ -625,10 +621,14 @@ export default {
     .mobile-eth-img {
       display: none;
     }
+
     img,
     video {
       height: 100%;
       width: 100%;
+    }
+    video {
+      height: auto;
     }
     @media (max-width: 450px) {
       .mobile-eth-img {
@@ -679,7 +679,7 @@ export default {
     transform: translate(100%, 0px);
   }
   to {
-    opacity: 1;
+    opacity: 0.64;
 
     transform: translate(0px, 0px);
   }
@@ -690,7 +690,7 @@ export default {
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: 0.64;
 
     transform: translate(0px, 0px);
   }

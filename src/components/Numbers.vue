@@ -89,7 +89,10 @@ export default {
     position: relative;
 
     gap: 10%;
+    padding-bottom: 130px;
     @media screen and (max-width: 870px) {
+      padding-bottom: 0px;
+
       flex-wrap: wrap;
     }
     @media screen and (max-width: 435px) {
