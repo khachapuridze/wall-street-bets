@@ -96,7 +96,7 @@
         thirst to take high risk in trading and investing
       </p>
       <img class="mobile-about-us-img" src="../assets/images/handshake.png" alt="handshake" />
-      <video preload="auto" loop autoplay muted width="450" height="400">
+      <video preload="auto" loop autoplay muted>
         <source src="@/assets/handshake.webm" type="video/webm" />
 
         Your browser does not support the video tag.
@@ -110,7 +110,7 @@
         been empowering retail equities and crypto trades in gaining edge and expanding their degenerate gambling
         activities.
       </p>
-      <video preload="auto" autoplay muted width="450" height="400" loop>
+      <video preload="auto" autoplay muted loop>
         <source src="@/assets/community.webm" type="video/webm" />
 
         Your browser does not support the video tag.
@@ -500,7 +500,7 @@ export default {
       @media (max-width: 450px) {
         .mobile-about-us-img {
           display: block;
-          width: 150px;
+          width: 80%;
           margin: auto;
         }
         video {
