@@ -1,5 +1,5 @@
 <template>
-  <div class="package-card" @click="$emit('open', 'test')">
+  <div class="package-card" @mouseover="hovering = true" @mouseleave="hovering = false" @click="$emit('open', 'test')">
     <div class="hover-layer"></div>
     <img
       v-if="isMobile"
@@ -7,7 +7,15 @@
       alt="card"
     />
 
-    <video v-else width="300" height="500" autoplay loop muted preload="auto">
+    <video v-else-if="!isMobile && !hovering" width="300" height="500" :autoplay="false" loop muted preload="auto">
+      <source
+        :src="!isNaN(props.index) && require(`@/assets/services/${props.index + 1}/${props.index + 1} WEBM.webm`)"
+        type="video/webm"
+      />
+
+      Your browser does not support the video tag.
+    </video>
+    <video v-else-if="!isMobile && hovering" width="300" height="500" :autoplay="true" loop muted preload="auto">
       <source
         :src="!isNaN(props.index) && require(`@/assets/services/${props.index + 1}/${props.index + 1} WEBM.webm`)"
         type="video/webm"
@@ -36,10 +44,13 @@
 </template>
 
 <script setup>
+import { ref } from '@vue/reactivity';
+
 const props = defineProps({
   data: Object,
   index: Number,
 });
+const hovering = ref(false);
 const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
 </script>
 
