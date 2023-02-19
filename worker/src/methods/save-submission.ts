@@ -8,7 +8,7 @@ const services = Object.values(Service);
 
 export async function saveFormSubmission({ req, res }: { req: RouterRequest, res: RouterResponse }) {
   const setResponse = setResponseFactory(res);
-  const requestBody = await parseRequestBody(req);
+  const requestBody = JSON.parse(req.body);
   const errors = validateData(requestBody);
   if (errors.length > 0) {
     setResponse('Data validation failed', 400, { errors });;
