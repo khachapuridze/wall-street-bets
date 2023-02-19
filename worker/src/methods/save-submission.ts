@@ -4,7 +4,7 @@ import { AUTHORIZATION_TOKEN, BASE_ID } from '..';
 import { setResponseFactory } from '../helpers';
 import { FormSubmission, Service } from '../types';
 
-const services = Object.keys(Service);
+const services = Object.values(Service);
 
 export async function saveFormSubmission({ req, res }: { req: RouterRequest, res: RouterResponse }) {
   const setResponse = setResponseFactory(res);
@@ -47,13 +47,13 @@ export async function saveFormSubmission({ req, res }: { req: RouterRequest, res
 
 function validateData(requestBody: FormSubmission): string[] {
   const errors: string[] = [];
-  services.forEach((key) => {
+  ['email', 'ideal_price', 'service', 'telegram_handle', 'twitter_handle'].forEach((key) => {
     if (requestBody[key] === undefined) {
       errors.push(`${key} is required`);
     }
   });
   if (!services.includes(requestBody.service)) {
-    errors.push('Services type is invalid');
+    errors.push(`Services type [${requestBody.service}] is invalid`);
   }
   return errors;
 }
