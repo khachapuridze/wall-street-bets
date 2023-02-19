@@ -1,0 +1,9 @@
+name = "api"
+main = "worker/index.ts"
+compatibility_date = "2023-02-19"
+usage_model = "bundled"
+env = { }
+
+[triggers]
+crons = [ ]
+
