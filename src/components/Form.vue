@@ -80,9 +80,26 @@
 </template>
 
 <script>
+import useFormValidation from '@/helpers/useFormValidation';
+
 import Button from './Button.vue';
 export default {
   components: { Button },
+  setup() {
+    let input = ref('');
+    
+    const email = ref('');
+    const service = ref('');
+    const telegram_handle = ref('');
+    const twitter_handle = ref('');
+    const ideal_price = ref('');
+
+    const { validateNameField, errors } = useFormValidation();
+    const validateInput = () => {
+      validateNameField('name', input.value);
+    };
+    return { input, error, validateInput };
+  },
 };
 </script>
 
