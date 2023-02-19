@@ -1,0 +1,88 @@
+openapi: 3.0.0
+servers:
+  - description: Production API domain
+    url: https://api.wall-street-bets.workers.dev
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/giokaxo/Wall-street-bets/1.0.0
+info:
+  description: Wall street bets form submission API
+  version: "1.0.0"
+  title: WSB API
+  contact:
+    email: giokaxo@gmail.com
+paths:
+  /apply:
+    post:
+      summary: Send form submission
+      operationId: sendFormSubmission
+      description: Endpoint to store form submissions
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSubmissionSuccessResponse'
+          description: 'Form submitted successfully'
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSubmissionFailResponse'
+          description: 'Form data validation failed'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormSubmission'
+        description: Form data to send submission
+components:
+  schemas:
+    FormSubmission:
+      type: object
+      required:
+        - email
+        - service
+        - telegram_handle
+        - twitter_handle
+        - ideal_price
+      properties:
+        email:
+          type: string
+          format: email
+          example: some@email.com
+        service:
+          type: string
+          enum: [hidden_gem, mini_voice_ama_meet_and_greet, post_on_top_crypto_sub_reddits, shilling_service, standard_pinned_post, supershiller_special, text_ama, voice_chat_ama]
+          example: hidden_gem
+        telegram_handle:
+          type: string
+          example: '@someuser'
+        twitter_handle:
+          type: string
+          example: '@someuser'
+        ideal_price:
+          type: string
+          example: 200
+    FormSubmissionSuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          example: 'Form submitted successfully'
+    FormSubmissionFailResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: 'Data validation failed'
+        errors:
+          type: array
+          items:
+            type: string
+          example: ['Email is required', 'Twitter handle is required']
