@@ -29,6 +29,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/FormSubmissionFailResponse'
           description: 'Form data validation failed'
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnexpectedErrorResponse'
+          description: 'Unexpected error occurred'
       requestBody:
         content:
           application/json:
@@ -86,3 +92,12 @@ components:
           items:
             type: string
           example: ['Email is required', 'Twitter handle is required']
+    UnexpectedErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: 'Something went wrong'
