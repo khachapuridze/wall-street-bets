@@ -14,5 +14,6 @@ jobs:
       - uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          preCommands: cd worker && npm install
+          workingDirectory: worker
+          preCommands: npm install
           command: publish src/index.ts
