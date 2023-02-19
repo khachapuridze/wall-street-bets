@@ -15,4 +15,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           preCommands: cd worker && npm install
-          command: publish worker/src/index.ts
+          command: publish src/index.ts
