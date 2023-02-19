@@ -5,7 +5,7 @@
     <div class="packages__list packages__list-first" data-scroll>
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(0, 3)"
-        @open="openPackage"
+        @open="openPackage(i, indx + 1)"
         :key="indx"
         :index="indx"
         :data="i"
@@ -14,7 +14,7 @@
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(3, 6)"
         class="mobile"
-        @open="openPackage"
+        @open="openPackage(i, indx + 1)"
         :index="indx"
         :key="indx"
         :data="i"
@@ -23,7 +23,7 @@
     <div class="packages__list packages__list-second">
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(3, 6)"
-        @open="openPackage"
+        @open="openPackage(i, indx + 4)"
         :key="indx + 3"
         :index="indx + 3"
         :data="i"
@@ -32,7 +32,7 @@
     <div class="packages__list packages__list-third" :class="{ active: $store.state.menuIsOpen }">
       <PackageCard
         v-for="(i, indx) in packageJSON.slice(6)"
-        @open="openPackage"
+        @open="openPackage(i, indx + 7)"
         :key="indx + 6"
         :index="indx + 6"
         :data="i"
@@ -46,20 +46,21 @@
       :pagination="{ clickable: true }"
     >
       <swiper-slide v-for="(i, indx) in packageJSON" @open="openPackage" :key="indx">
-        <PackageCard :index="indx" @open="openPackage" :data="i" />
+        <PackageCard :index="indx" @open="openPackage(i, indx + 1)" :data="i" />
       </swiper-slide>
     </swiper>
     <Button @click="toggleSeeMore" class="packages-btn" :title="!$store.state.menuIsOpen ? 'see more' : 'see less'" />
     <teleport to="#form-modal">
       <div class="form-container" :class="{ open: formOpen }">
         <div class="form-container__layer" @click="closeForm"></div>
-        <Form @close="closeForm" />
+        <Form v-if="formOpen" @close="closeForm" />
       </div>
     </teleport>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
 // import Swiper core and required components
 import SwiperCore, { Pagination, A11y } from 'swiper';
 import { ref } from 'vue';
@@ -80,12 +81,15 @@ export default {
     },
   },
   setup(props, { emit }) {
+    const store = useStore();
+
     const formOpen = ref(false);
     const seeMore = ref(false);
     const packageJSON = [
       {
         id: 1,
         title: 'Standard Pinned Post',
+        service: 'standard_pinned_post',
         coloredTitle: '',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
@@ -93,56 +97,66 @@ export default {
         id: 2,
         title: 'Text ',
         coloredTitle: 'AMA 💬',
+        service: 'text_ama',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 3,
         title: 'Voice Chat ',
         coloredTitle: 'AMA 🗣',
+        service: 'voice_chat_ama',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 4,
         title: 'Hidden ',
         coloredTitle: 'Gem 💎',
+        service: 'hidden_gem',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 5,
         title: 'Post ',
         coloredTitle: 'on Top Crypto Sub Reddits',
+        service: 'post_on_top_crypto_sub_reddits',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 6,
         title: 'SuperShiller ',
         coloredTitle: 'Special',
+        service: 'supershiller_special',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 7,
         title: 'Mini-Voice ',
-        coloredTitle: 'AMA/"Meet and Greet" ',
+        coloredTitle: 'AMA/"Meet and Greet"',
+        service: 'mini_voice_ama_meet_and_greet',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
       {
         id: 8,
         title: 'Shilling ',
         coloredTitle: 'Service',
+        service: 'shilling_service',
         desc: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking atits layout.',
       },
     ];
 
-    const openPackage = (value) => {
+    const openPackage = (value, id) => {
       formOpen.value = true;
       emit('toggleScroll', true);
-      console.log(value);
+
+      store.commit('setService', { ...value, id });
 
       document.body.style.overflowY = 'hidden';
       document.getElementById('js-scroll').style.overflow = 'hidden';
     };
     const closeForm = () => {
-      formOpen.value = false;
+      setTimeout(() => {
+        formOpen.value = false;
+      }, 1);
       emit('toggleScroll', false);
       document.body.style = '';
       document.getElementById('js-scroll').style.overflow = 'auto';

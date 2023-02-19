@@ -1,5 +1,10 @@
 <template>
-  <div class="package-card" @mouseover="hovering = true" @mouseleave="hovering = false" @click="$emit('open', 'test')">
+  <div
+    class="package-card"
+    @mouseover="hovering = true"
+    @mouseleave="hovering = false"
+    @click="$emit('open', props.index + 1)"
+  >
     <div class="hover-layer"></div>
     <img
       v-if="isMobile"
