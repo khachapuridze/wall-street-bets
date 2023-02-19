@@ -8,7 +8,7 @@ const services = Object.values(Service);
 
 export async function saveFormSubmission({ req, res }: { req: RouterRequest, res: RouterResponse }) {
   const setResponse = setResponseFactory(res);
-  const requestBody = JSON.parse(req.body) as FormSubmission;
+  const requestBody = await parseRequestBody(req);
   const errors = validateData(requestBody);
   if (errors.length > 0) {
     setResponse('Data validation failed', 400, { errors });;
@@ -56,4 +56,23 @@ function validateData(requestBody: FormSubmission): string[] {
     errors.push(`Services type [${requestBody.service}] is invalid`);
   }
   return errors;
+}
+
+
+async function parseRequestBody(request: RouterRequest) {
+  const contentType = request.headers.get('content-type')!;
+  if (contentType.includes('application/json')) {
+    return request.json();
+  } else if (contentType.includes('application/text') || contentType.includes('text/html')) {
+    throw new Error('Text type is not supported');
+  } else if (contentType.includes('form')) {
+    const formData = await request.formData();
+    const body = {};
+    for (const [key, value] of formData.entries()) {
+      body[key] = value;
+    }
+    return body;
+  } else {
+    throw new Error('Unable to parse request body');
+  }
 }
