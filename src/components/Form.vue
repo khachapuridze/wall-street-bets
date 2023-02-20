@@ -22,12 +22,12 @@
           {{ $store.state.service?.title }}
           <div class="form__title-spot">{{ $store.state.service?.coloredTitle }}</div>
         </span>
-        <div class="form__price">
+        <!-- <div class="form__price">
           <span class="form__title-fixed">Fixed Price:</span>
           <div class="form__title-blue">
             <span class="form__title-price">2,000$</span>
           </div>
-        </div>
+        </div> -->
 
         <p class="form__title-text">
           Includes countdown lead up hype post then usually 2 hours later reveal the hidden gem spotlight giving the
@@ -105,10 +105,10 @@
           Option 1
         </label>
       </div> -->
-      <div class="form__agreement">
+      <!-- <div class="form__agreement">
         <input type="checkbox" checked />
         <p>I’m okay on some testing <a>Terms & Conditions</a></p>
-      </div>
+      </div> -->
       <button type="submit">
         <Button title="Get a Personalized Pricing Proposal" send />
       </button>
@@ -223,6 +223,7 @@ const submitForm = () => {
       font-weight: 400;
       font-size: 36px;
       line-height: 40px;
+      display: flex;
       color: #ffffff;
       @media (max-width: 435px) {
         font-size: 20px;
@@ -236,6 +237,7 @@ const submitForm = () => {
       font-size: 36px;
       line-height: 40px;
       color: #dc0506;
+      margin-left: 10px;
       @media (max-width: 435px) {
         font-size: 20px;
         line-height: 28px;
@@ -316,6 +318,7 @@ const submitForm = () => {
   &__cont {
     display: flex;
     gap: 48px;
+    margin-bottom: 30px;
     img {
       height: 323px;
       @media (max-width: 1439px) {
